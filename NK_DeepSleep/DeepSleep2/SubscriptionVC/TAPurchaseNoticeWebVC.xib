@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPurchaseNoticeWebVC" customModule="TiktokAnalysis" customModuleProvider="target">
+            <connections>
+                <outlet property="noticeWeb" destination="dge-Vo-vT2" id="SKf-Pr-7iw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nd5-wZ-srl">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npe-19-U9s">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8U-ng-pCp">
+                                    <rect key="frame" x="10" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="eoI-8c-wfR"/>
+                                        <constraint firstAttribute="height" constant="44" id="lQ3-o8-fpg"/>
+                                    </constraints>
+                                    <state key="normal" image="close_icon_b"/>
+                                    <connections>
+                                        <action selector="backBtnClick:" destination="-1" eventType="touchUpInside" id="woo-Jh-2Wh"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="I8U-ng-pCp" firstAttribute="centerY" secondItem="npe-19-U9s" secondAttribute="centerY" id="652-so-1ua"/>
+                                <constraint firstItem="I8U-ng-pCp" firstAttribute="leading" secondItem="npe-19-U9s" secondAttribute="leading" constant="10" id="O8G-Nb-RbG"/>
+                                <constraint firstAttribute="height" constant="44" id="xl2-Pl-mXx"/>
+                            </constraints>
+                        </view>
+                        <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dge-Vo-vT2">
+                            <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <wkWebViewConfiguration key="configuration">
+                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkPreferences key="preferences"/>
+                            </wkWebViewConfiguration>
+                        </wkWebView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="npe-19-U9s" firstAttribute="top" secondItem="nd5-wZ-srl" secondAttribute="top" id="AaD-bl-6aL"/>
+                        <constraint firstAttribute="trailing" secondItem="npe-19-U9s" secondAttribute="trailing" id="KQv-9u-ZIN"/>
+                        <constraint firstAttribute="trailing" secondItem="dge-Vo-vT2" secondAttribute="trailing" id="QBc-Bj-S2b"/>
+                        <constraint firstAttribute="bottom" secondItem="dge-Vo-vT2" secondAttribute="bottom" id="TnC-uq-Sra"/>
+                        <constraint firstItem="dge-Vo-vT2" firstAttribute="leading" secondItem="nd5-wZ-srl" secondAttribute="leading" id="XhT-yX-miE"/>
+                        <constraint firstItem="dge-Vo-vT2" firstAttribute="top" secondItem="npe-19-U9s" secondAttribute="bottom" id="izW-aC-jn4"/>
+                        <constraint firstItem="npe-19-U9s" firstAttribute="leading" secondItem="nd5-wZ-srl" secondAttribute="leading" id="tgV-df-7FQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="nd5-wZ-srl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3Bt-pG-ozd"/>
+                <constraint firstItem="nd5-wZ-srl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="m4Q-sQ-Nov"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nd5-wZ-srl" secondAttribute="trailing" id="pIt-Uo-7x8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nd5-wZ-srl" secondAttribute="bottom" id="vVH-iZ-qp5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="147"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close_icon_b" width="30" height="30"/>
+    </resources>
+</document>

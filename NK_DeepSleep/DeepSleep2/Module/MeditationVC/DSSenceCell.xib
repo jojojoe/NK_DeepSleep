@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DSSenceCell" customModule="DeepSleep" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvW-VW-2G2">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-jL-l78">
+                                <rect key="frame" x="8" y="10" width="104" height="138"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3rH-fm-m8q">
+                                        <rect key="frame" x="0.0" y="0.0" width="104" height="138"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="3rH-fm-m8q" firstAttribute="leading" secondItem="f8C-jL-l78" secondAttribute="leading" id="4W5-Si-vE2"/>
+                                    <constraint firstItem="3rH-fm-m8q" firstAttribute="top" secondItem="f8C-jL-l78" secondAttribute="top" id="5jU-mU-Tii"/>
+                                    <constraint firstAttribute="trailing" secondItem="3rH-fm-m8q" secondAttribute="trailing" id="E0q-WG-ofF"/>
+                                    <constraint firstAttribute="bottom" secondItem="3rH-fm-m8q" secondAttribute="bottom" id="w1o-al-6a8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egz-Dm-8US">
+                                <rect key="frame" x="67" y="22" width="33" height="21"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLUS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="nCF-Vi-g86">
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="21"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip_ic" translatesAutoresizingMaskIntoConstraints="NO" id="ReC-PP-MtJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="21"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ReC-PP-MtJ" firstAttribute="top" secondItem="egz-Dm-8US" secondAttribute="top" id="0M7-ga-TVc"/>
+                                    <constraint firstItem="nCF-Vi-g86" firstAttribute="top" secondItem="egz-Dm-8US" secondAttribute="top" id="4oG-n6-Q9o"/>
+                                    <constraint firstItem="nCF-Vi-g86" firstAttribute="leading" secondItem="egz-Dm-8US" secondAttribute="leading" id="9lt-80-jAU"/>
+                                    <constraint firstAttribute="width" constant="33" id="E1F-0s-5q2"/>
+                                    <constraint firstAttribute="bottom" secondItem="ReC-PP-MtJ" secondAttribute="bottom" id="KQF-D7-JLC"/>
+                                    <constraint firstItem="ReC-PP-MtJ" firstAttribute="leading" secondItem="egz-Dm-8US" secondAttribute="leading" id="KUZ-BI-sfq"/>
+                                    <constraint firstAttribute="trailing" secondItem="nCF-Vi-g86" secondAttribute="trailing" id="QLC-Ew-I4U"/>
+                                    <constraint firstAttribute="height" constant="21" id="WV7-9v-y1a"/>
+                                    <constraint firstAttribute="bottom" secondItem="nCF-Vi-g86" secondAttribute="bottom" id="eNa-IY-Sr5"/>
+                                    <constraint firstAttribute="trailing" secondItem="ReC-PP-MtJ" secondAttribute="trailing" id="iQC-MN-8c5"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before going to bed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="cHa-u1-Od6">
+                                <rect key="frame" x="20" y="156" width="80" height="36"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f8C-jL-l78" firstAttribute="leading" secondItem="tvW-VW-2G2" secondAttribute="leading" constant="8" id="IMx-7t-m2c"/>
+                            <constraint firstItem="egz-Dm-8US" firstAttribute="top" secondItem="f8C-jL-l78" secondAttribute="top" constant="12" id="LLc-q9-sY7"/>
+                            <constraint firstItem="egz-Dm-8US" firstAttribute="trailing" secondItem="f8C-jL-l78" secondAttribute="trailing" constant="-12" id="WbL-9p-Hrt"/>
+                            <constraint firstItem="cHa-u1-Od6" firstAttribute="leading" secondItem="tvW-VW-2G2" secondAttribute="leading" constant="20" id="XiY-zL-YAz"/>
+                            <constraint firstItem="cHa-u1-Od6" firstAttribute="top" secondItem="f8C-jL-l78" secondAttribute="bottom" constant="8" id="ek3-gi-gyf"/>
+                            <constraint firstItem="f8C-jL-l78" firstAttribute="centerX" secondItem="tvW-VW-2G2" secondAttribute="centerX" id="icC-lu-mpd"/>
+                            <constraint firstItem="f8C-jL-l78" firstAttribute="top" secondItem="tvW-VW-2G2" secondAttribute="top" constant="10" id="qpA-MA-2Jc"/>
+                            <constraint firstItem="cHa-u1-Od6" firstAttribute="centerX" secondItem="tvW-VW-2G2" secondAttribute="centerX" id="sB7-G9-zZJ"/>
+                            <constraint firstAttribute="bottom" secondItem="f8C-jL-l78" secondAttribute="bottom" constant="52" id="ykc-Hi-rOj"/>
+                            <constraint firstAttribute="bottom" secondItem="cHa-u1-Od6" secondAttribute="bottom" constant="8" id="ytQ-o2-OWv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="tvW-VW-2G2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="J62-e3-646"/>
+                <constraint firstItem="tvW-VW-2G2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ry3-MQ-SfQ"/>
+                <constraint firstAttribute="trailing" secondItem="tvW-VW-2G2" secondAttribute="trailing" id="Rzh-YH-LS9"/>
+                <constraint firstAttribute="bottom" secondItem="tvW-VW-2G2" secondAttribute="bottom" id="zTF-qn-DT4"/>
+            </constraints>
+            <size key="customSize" width="99" height="201"/>
+            <connections>
+                <outlet property="coverImageView" destination="3rH-fm-m8q" id="MjW-io-PZg"/>
+                <outlet property="nameLabel" destination="cHa-u1-Od6" id="Ohn-cf-a67"/>
+                <outlet property="proBgView" destination="egz-Dm-8US" id="j6X-lr-eGQ"/>
+                <outlet property="proLabel" destination="nCF-Vi-g86" id="Gjl-iv-Jam"/>
+                <outlet property="topContentBgView" destination="f8C-jL-l78" id="ga7-po-DKZ"/>
+            </connections>
+            <point key="canvasLocation" x="-31.884057971014496" y="222.65625"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="vip_ic" width="33" height="21"/>
+    </resources>
+</document>

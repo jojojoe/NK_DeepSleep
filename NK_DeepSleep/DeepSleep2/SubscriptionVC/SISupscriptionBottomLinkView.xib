@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SISupscriptionBottomLinkView" customModule="Story_Reports" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BN-zB-Eyf">
+                    <rect key="frame" x="88.5" y="42" width="77" height="26"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="10"/>
+                    <state key="normal" title="Purchase Notice">
+                        <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="purchaseBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="g5u-aT-geG"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-ia-jGE">
+                    <rect key="frame" x="170.5" y="47" width="1" height="16"/>
+                    <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="7DW-TR-CHV"/>
+                        <constraint firstAttribute="width" constant="1" id="JDc-Ke-JSt"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6i-77-fSI">
+                    <rect key="frame" x="175.5" y="42" width="63" height="26"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="10"/>
+                    <state key="normal" title="Terms of Use">
+                        <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="termsBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Qz7-Pk-cYK"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-81-qTu">
+                    <rect key="frame" x="243.5" y="47" width="1" height="16"/>
+                    <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="gEE-UI-3gZ"/>
+                        <constraint firstAttribute="height" constant="16" id="pin-8E-WEg"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzv-fr-fZq">
+                    <rect key="frame" x="248.5" y="42" width="65" height="26"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="10"/>
+                    <state key="normal" title="Privacy Policy">
+                        <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="privacyBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="1f0-eR-XQm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="i2s-ia-jGE" firstAttribute="leading" secondItem="7BN-zB-Eyf" secondAttribute="trailing" constant="5" id="IbL-hN-Lnw"/>
+                <constraint firstItem="TWt-81-qTu" firstAttribute="centerY" secondItem="m6i-77-fSI" secondAttribute="centerY" id="SoR-Zq-9LZ"/>
+                <constraint firstItem="Mzv-fr-fZq" firstAttribute="centerY" secondItem="m6i-77-fSI" secondAttribute="centerY" id="Yrh-VN-1rE"/>
+                <constraint firstItem="i2s-ia-jGE" firstAttribute="centerY" secondItem="7BN-zB-Eyf" secondAttribute="centerY" id="bLu-GE-ywa"/>
+                <constraint firstItem="TWt-81-qTu" firstAttribute="leading" secondItem="m6i-77-fSI" secondAttribute="trailing" constant="5" id="ect-cx-A2Z"/>
+                <constraint firstItem="m6i-77-fSI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hiP-iJ-0R2"/>
+                <constraint firstItem="Mzv-fr-fZq" firstAttribute="leading" secondItem="m6i-77-fSI" secondAttribute="trailing" constant="10" id="iY1-Ta-lgV"/>
+                <constraint firstItem="7BN-zB-Eyf" firstAttribute="trailing" secondItem="m6i-77-fSI" secondAttribute="leading" constant="-10" id="lhd-EY-o7r"/>
+                <constraint firstItem="m6i-77-fSI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tZe-FM-a7y"/>
+                <constraint firstItem="7BN-zB-Eyf" firstAttribute="centerY" secondItem="m6i-77-fSI" secondAttribute="centerY" id="wtK-8U-WfB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="privacyBtn" destination="Mzv-fr-fZq" id="IJ2-Vp-2DT"/>
+                <outlet property="purchaseBtn" destination="7BN-zB-Eyf" id="dhb-tX-gEO"/>
+                <outlet property="termsBtn" destination="m6i-77-fSI" id="RBo-IT-5pW"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="393.08035714285711"/>
+        </view>
+    </objects>
+</document>

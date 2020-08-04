@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="130px" viewBox="0 0 150 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>triangle_ic</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="triangle_ic" fill="#FFFFFF">
+            <polygon id="1" points="74.3775395 0.000157894737 3.94736842e-05 129.900158 74.45175 47.8016053 108.011882 105.606079"></polygon>
+            <polygon id="2" points="74.3775395 0.000157894737 108.011882 105.606079 41.2654342 105.606079 149.338461 129.900158"></polygon>
+            <polygon id="3" points="0 129.9 149.278026 129.9 41.2653947 105.605921 74.4517105 47.8014474"></polygon>
+        </g>
+    </g>
+</svg>
