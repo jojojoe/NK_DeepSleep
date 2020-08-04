@@ -1,0 +1,7 @@
+NK_DeepSleep.xcodeproj/xcuserdata/
+NK_DeepSleep.xcworkspace/
+Pods/
+*.swp
+Podfile.lock
+.DS_Store
+NK_DeepSleep.xcodeproj/project.xcworkspace/xcuserdata/
