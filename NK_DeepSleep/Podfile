@@ -31,7 +31,7 @@ target 'DeepSleep2' do
 #  pod 'StreamingKit'
 #  pod 'SwiftAudioPlayer'
 
-  
+  pod 'FBSDKLoginKit'
   
   pod 'ThinkingSDK'
   # Adjust

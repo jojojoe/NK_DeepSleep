@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,28 +11,61 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSSoundsVC" customModule="DeepSleep" customModuleProvider="target">
             <connections>
                 <outlet property="bottomBgView" destination="eeT-Aj-fua" id="EOA-gF-KQl"/>
+                <outlet property="bottomBgViewHeight" destination="88S-5J-iRl" id="9ki-Ds-ZHy"/>
                 <outlet property="canvasBgView" destination="SDb-5R-MdO" id="0PX-oh-MiP"/>
+                <outlet property="randomMixBtn" destination="NbV-qg-I9u" id="efK-3l-1ia"/>
                 <outlet property="topSoundConfigBtn" destination="PAR-vF-cpJ" id="IKl-WE-ACc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hp_star_bg_ic" translatesAutoresizingMaskIntoConstraints="NO" id="iTn-Nn-WE6">
-                    <rect key="frame" x="0.0" y="44" width="414" height="515"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="466.5"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="iTn-Nn-WE6" secondAttribute="height" multiplier="508:632" id="wLU-Z0-vzm"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDb-5R-MdO">
-                    <rect key="frame" x="0.0" y="44" width="414" height="270"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbV-qg-I9u">
+                            <rect key="frame" x="20" y="195" width="130" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="2Ac-Mm-OzL"/>
+                                <constraint firstAttribute="width" constant="130" id="ON6-5d-ha5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
+                            <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                            <state key="normal" title="Random Mix" image="sounds_random_mix_ic"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="randomMixBtnClick:" destination="-1" eventType="touchUpInside" id="hI5-ZP-dgJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="NbV-qg-I9u" secondAttribute="bottom" constant="10" id="Elj-2C-2ir"/>
+                        <constraint firstItem="NbV-qg-I9u" firstAttribute="leading" secondItem="SDb-5R-MdO" secondAttribute="leading" constant="20" id="bSK-BA-YDP"/>
+                    </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAR-vF-cpJ">
-                    <rect key="frame" x="360" y="52" width="44" height="44"/>
+                    <rect key="frame" x="321" y="8" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="dwD-Vo-sHt"/>
                         <constraint firstAttribute="height" constant="44" id="tc1-nC-XgG"/>
@@ -42,8 +76,11 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeT-Aj-fua">
-                    <rect key="frame" x="0.0" y="314" width="414" height="548"/>
+                    <rect key="frame" x="0.0" y="247" width="375" height="420"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="420" id="88S-5J-iRl"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.090244807299999993" green="0.076801992949999995" blue="0.143086344" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,7 +88,6 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eeT-Aj-fua" secondAttribute="trailing" id="0iO-N7-E9C"/>
                 <constraint firstItem="eeT-Aj-fua" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3Zb-u9-R5y"/>
                 <constraint firstItem="SDb-5R-MdO" firstAttribute="bottom" secondItem="eeT-Aj-fua" secondAttribute="top" id="B2g-QU-BMX"/>
-                <constraint firstItem="eeT-Aj-fua" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="270" id="OZl-BP-nNM"/>
                 <constraint firstItem="iTn-Nn-WE6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="U1U-yE-m9w"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iTn-Nn-WE6" secondAttribute="trailing" id="VkS-Qs-rb8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eeT-Aj-fua" secondAttribute="bottom" id="Wzv-DU-NEj"/>
@@ -69,5 +105,6 @@
     <resources>
         <image name="add_more_ic" width="16" height="16"/>
         <image name="hp_star_bg_ic" width="254" height="316"/>
+        <image name="sounds_random_mix_ic" width="20" height="20"/>
     </resources>
 </document>

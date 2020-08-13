@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,24 +28,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAr-P4-vpq">
-                    <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="770"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blm-Wx-EmH">
-                    <rect key="frame" x="0.0" y="817" width="414" height="1"/>
+                    <rect key="frame" x="0.0" y="813" width="414" height="1"/>
                     <color key="backgroundColor" red="0.13725490196078433" green="0.12549019607843137" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="pDO-Ps-evu"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U61-uQ-oiV">
-                    <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                    <rect key="frame" x="0.0" y="814" width="414" height="48"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TT1-Dk-ECx">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9W-9m-ynL">
-                                    <rect key="frame" x="0.0" y="0.0" width="138" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="48"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="tapbar_home_ic_normal">
                                         <color key="titleColor" red="0.086274509799999996" green="0.094117647060000004" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,7 +57,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnf-7s-p09">
-                                    <rect key="frame" x="138" y="0.0" width="138" height="44"/>
+                                    <rect key="frame" x="138" y="0.0" width="138" height="48"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="tapbar_mix_ic_normal"/>
                                     <state key="selected" image="tapbar_mix_ic_seclected"/>
@@ -66,7 +67,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pu-3P-wxm">
-                                    <rect key="frame" x="276" y="0.0" width="138" height="44"/>
+                                    <rect key="frame" x="276" y="0.0" width="138" height="48"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="tapbar_me_ic_normal"/>
                                     <state key="selected" image="tapbar_me_ic_seclected"/>
@@ -82,7 +83,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="TT1-Dk-ECx" firstAttribute="top" secondItem="U61-uQ-oiV" secondAttribute="top" id="Y0g-PH-A6k"/>
-                        <constraint firstAttribute="height" constant="44" id="esB-bs-s8q"/>
+                        <constraint firstAttribute="height" constant="48" id="esB-bs-s8q"/>
                         <constraint firstAttribute="trailing" secondItem="TT1-Dk-ECx" secondAttribute="trailing" id="hNb-fJ-eiw"/>
                         <constraint firstItem="TT1-Dk-ECx" firstAttribute="leading" secondItem="U61-uQ-oiV" secondAttribute="leading" id="mpQ-Eu-IDQ"/>
                         <constraint firstAttribute="bottom" secondItem="TT1-Dk-ECx" secondAttribute="bottom" id="ptW-QK-JBT"/>
@@ -116,7 +117,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JAT-XE-uYi" secondAttribute="trailing" id="d2e-2p-rCh"/>
                 <constraint firstItem="JAT-XE-uYi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="e5b-qL-gEX"/>
                 <constraint firstItem="blm-Wx-EmH" firstAttribute="leading" secondItem="U61-uQ-oiV" secondAttribute="leading" id="i0C-O5-fBM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UAr-P4-vpq" secondAttribute="bottom" constant="44" id="jQ9-Kx-njE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UAr-P4-vpq" secondAttribute="bottom" constant="48" id="jQ9-Kx-njE"/>
                 <constraint firstItem="U61-uQ-oiV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="krd-Nf-oZt"/>
                 <constraint firstItem="UAr-P4-vpq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lDb-8u-8Vu"/>
                 <constraint firstAttribute="bottom" secondItem="JAT-XE-uYi" secondAttribute="bottom" id="mcc-zj-ah4"/>

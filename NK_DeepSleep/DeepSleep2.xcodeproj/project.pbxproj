@@ -597,6 +597,8 @@
 			dependencies = (
 			);
 			name = DeepSleep2;
+			packageProductDependencies = (
+			);
 			productName = DeepSleep2;
 			productReference = 3A276F7524B302FE009B5F69 /* DeepSleep.app */;
 			productType = "com.apple.product-type.application";
@@ -625,6 +627,8 @@
 				Base,
 			);
 			mainGroup = 3A276F6C24B302FE009B5F69;
+			packageReferences = (
+			);
 			productRefGroup = 3A276F7624B302FE009B5F69 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -961,7 +965,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0.0;
-				DEVELOPMENT_TEAM = 5P8Y5QT7J8;
+				DEVELOPMENT_TEAM = NGJYQ9D8P3;
 				INFOPLIST_FILE = DeepSleep2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -969,7 +973,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.deepsleep.sounds;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxxtest123123.test123123;
 				PRODUCT_NAME = DeepSleep;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

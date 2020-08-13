@@ -44,12 +44,15 @@ extension MTEvent { // Adjust
         #if DEBUG
         let config = ADJConfig(appToken: adjustAppToken, environment: ADJEnvironmentSandbox)
         config?.delegate = self
+        config?.defaultTracker = "organic"
         Adjust.appDidLaunch(config)
         #else
         let config = ADJConfig(appToken: adjustAppToken, environment: ADJEnvironmentProduction)
         config?.delegate = self
+        config?.defaultTracker = "organic"
         Adjust.appDidLaunch(config)
         #endif
+        
         
     }
     
@@ -207,6 +210,16 @@ extension MTEvent {
         ])
         
     }
+
+    @objc
+       public func tga_eventRandommixClick() {
+           ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_randommix_click", properties: [
+
+               "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
+               "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
+           ])
+           
+       }
     
     @objc
     public func tga_eventSoundClick(itemName: String) {
@@ -619,7 +632,7 @@ class MTEventParaManager: Codable  {
 extension Defaults.Keys {
     
     static let isFirstOpenSession = Key<Bool?>("Event.isFirstOpenSession")
-    
+    static let isFirstInstallAdjustEvent = Key<Bool?>("Event.isFirstInstallAdjustEvent")
     
 }
 

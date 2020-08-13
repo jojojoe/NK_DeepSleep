@@ -30,7 +30,7 @@ class DSMainVC: UIViewController {
     var viewWillAppearOnce: Once = Once()
     var viewDidAppearOnce: Once = Once()
     
-    var splashList = ["8_helper_ic_1", "8_helper_ic_2", "8_helper_ic_3", "8_helper_ic_4"]
+    var splashList = ["8_helper_ic_1", "8_helper_ic_2", "8_helper_ic_3", "8_helper_ic_4", "8_helper_ic_5"]
     @IBOutlet weak var splashBgView: UIControl!
     @IBAction func splashBgViewClick(_ sender: UIControl) {
         currentSplashIndex += 1

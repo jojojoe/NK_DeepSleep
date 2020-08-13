@@ -23,6 +23,7 @@ import FirebaseMessaging
 import FirebaseInstanceID
 import SwiftyStoreKit
 import SEExtensions
+import FBSDKCoreKit
 
 
 @UIApplicationMain
@@ -34,29 +35,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var uuidString = ""
     
     func initMainVC() {
-            
-            let nav = UINavigationController.init(rootViewController: mainVC)
-            nav.isNavigationBarHidden = true
-            window?.rootViewController = nav
-            window?.makeKeyAndVisible()
-            
-            #if DEBUG
-    //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-    //            DoraemonManager.shareInstance().install()
-    //        }
-            #endif
-            #if DEBUG
-            for fy in UIFont.familyNames {
-                let fts = UIFont.fontNames(forFamilyName: fy)
-                for ft in fts {
-                    debugPrint("***fontName = \(ft)")
-                }
+        
+        let nav = UINavigationController.init(rootViewController: mainVC)
+        nav.isNavigationBarHidden = true
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
+        
+        #if DEBUG
+        //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+        //            DoraemonManager.shareInstance().install()
+        //        }
+        #endif
+        #if DEBUG
+        for fy in UIFont.familyNames {
+            let fts = UIFont.fontNames(forFamilyName: fy)
+            for ft in fts {
+                debugPrint("***fontName = \(ft)")
             }
-            #endif
         }
+        #endif
+    }
     
     func initDatabase() {
-//        DatabaseHelper.default.prepareCommentUserListDatabase()
+        //        DatabaseHelper.default.prepareCommentUserListDatabase()
     }
     
     
@@ -72,11 +73,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        
+        ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
         
         return true
     }
 
+    func application( _ app:UIApplication, open url:URL, options: [UIApplication.OpenURLOptionsKey :Any] = [:] ) -> Bool {
+        guard !ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        ) else { return true }
+
+        return false
+    }
+    
+    
     // MARK: UISceneSession Lifecycle
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -280,3 +293,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 }
 
+
+
+
+    

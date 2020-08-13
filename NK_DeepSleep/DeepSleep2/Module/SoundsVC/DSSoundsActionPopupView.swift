@@ -12,7 +12,7 @@ import RxSwift
 
 class DSSoundsActionPopupView: UIView {
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 160, height: 140)
+        return CGSize(width: 160, height: 90)
     }
     var randomActionBlock: (()->Void)?
     var myFavoriteActionBlock: (()->Void)?
@@ -97,7 +97,7 @@ extension DSSoundsActionPopupView {
         
         
         self.flex.direction(.column).alignContent(.start).justifyContent(.center).alignItems(.start).define {
-            $0.addItem(randomMixBtn).width(100%).height(40)
+//            $0.addItem(randomMixBtn).width(100%).height(40)
             $0.addItem(myFavouriteBtn).marginTop(4).width(100%).height(40)
             $0.addItem(addToFavoriteBtn).marginTop(4).width(100%).height(40)
         }

@@ -15,6 +15,7 @@ import Alertift
 import MediaPlayer
 import SwifterSwift
 import NoticeObserveKit
+import DeviceKit
 
 extension Notice.Names {
     static let noti_pauseCurrentSounds =
@@ -39,6 +40,14 @@ class DSSoundsVC: UIViewController {
         showSoundsConfigPopup()
         showSoundsConfigBtnAnimation(isStart: true)
     }
+    
+    @IBOutlet weak var randomMixBtn: UIButton!
+    @IBAction func randomMixBtnClick(_ sender: UIButton) {
+        soundsToolRandomAction()
+    }
+    
+    @IBOutlet weak var bottomBgViewHeight: NSLayoutConstraint!
+    
     var textF1 = UITextField()
     
     var headerInSectionHeight: Int = 50
@@ -81,6 +90,8 @@ class DSSoundsVC: UIViewController {
         viewWillApearOnce.run {
             setupSoundsControlView()
             
+            randomMixBtn.font(14, .Quicksand_Medium)
+            canvasBgView.bringSubviewToFront(randomMixBtn)
         }
     }
     
@@ -91,7 +102,9 @@ class DSSoundsVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        if let soundsPreview_T = soundsPreview {
+            soundsPreview_T.center = CGPoint.init(x: canvasBgView.width / 2, y: canvasBgView.height / 2)
+        }
         pagingView.frame = self.bottomBgView.bounds
     }
 
@@ -149,7 +162,7 @@ extension DSSoundsVC {
     func showSoundsConfigPopup() {
         
         let width: CGFloat = 160
-        let height: CGFloat = 140
+        let height: CGFloat = 110
         let x: CGFloat = UIScreen.width - width - 17
         let y: CGFloat = topSoundConfigBtn.frame.maxY + 10
         
@@ -212,7 +225,8 @@ extension DSSoundsVC {
 
 extension DSSoundsVC {
     func soundsToolRandomAction() {
-        
+        MTEvent.default.tga_eventRandommixClick()
+         
         if !isNetworkConnect {
             let firstBundle = soundsBundleList.first
             segmentedView.selectItemAt(index: 0)
@@ -482,7 +496,9 @@ extension DSSoundsVC {
     }
     
     func setupView() {
-        
+        if Device.current.diagonal <= 4.7 || Device.current.diagonal >= 7.9 {
+            bottomBgViewHeight.constant = 300
+        }
     }
     
     func setupCollection() {

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,19 +31,19 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qed-9S-3h7">
-                            <rect key="frame" x="38" y="10" width="92" height="35"/>
+                            <rect key="frame" x="18" y="20" width="92" height="35"/>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a meditation scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltB-Fc-Jfp">
-                            <rect key="frame" x="38" y="47" width="183.5" height="16.5"/>
+                            <rect key="frame" x="18" y="57" width="183.5" height="16.5"/>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
                             <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ioz-lV-tm0">
-                            <rect key="frame" x="0.0" y="73.5" width="414" height="744.5"/>
+                            <rect key="frame" x="0.0" y="83.5" width="414" height="734.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BFO-E3-DvI">
                                 <size key="itemSize" width="128" height="128"/>
@@ -61,9 +62,9 @@
                         <constraint firstItem="ioz-lV-tm0" firstAttribute="top" secondItem="ltB-Fc-Jfp" secondAttribute="bottom" constant="10" id="0W9-L5-zeb"/>
                         <constraint firstAttribute="trailing" secondItem="ioz-lV-tm0" secondAttribute="trailing" id="51G-kj-pG1"/>
                         <constraint firstItem="ltB-Fc-Jfp" firstAttribute="top" secondItem="qed-9S-3h7" secondAttribute="bottom" constant="2" id="5zK-6p-tMy"/>
-                        <constraint firstItem="qed-9S-3h7" firstAttribute="top" secondItem="TPZ-bA-Q0q" secondAttribute="top" constant="10" id="Baq-S5-TjC"/>
+                        <constraint firstItem="qed-9S-3h7" firstAttribute="top" secondItem="TPZ-bA-Q0q" secondAttribute="top" constant="20" id="Baq-S5-TjC"/>
                         <constraint firstItem="ltB-Fc-Jfp" firstAttribute="leading" secondItem="qed-9S-3h7" secondAttribute="leading" id="LWf-cb-HCu"/>
-                        <constraint firstItem="qed-9S-3h7" firstAttribute="leading" secondItem="TPZ-bA-Q0q" secondAttribute="leading" constant="38" id="MV0-zw-ofy"/>
+                        <constraint firstItem="qed-9S-3h7" firstAttribute="leading" secondItem="TPZ-bA-Q0q" secondAttribute="leading" constant="18" id="MV0-zw-ofy"/>
                         <constraint firstAttribute="bottom" secondItem="ioz-lV-tm0" secondAttribute="bottom" id="UY5-Rg-ccu"/>
                         <constraint firstItem="ioz-lV-tm0" firstAttribute="leading" secondItem="TPZ-bA-Q0q" secondAttribute="leading" id="sfo-iJ-2GE"/>
                     </constraints>
