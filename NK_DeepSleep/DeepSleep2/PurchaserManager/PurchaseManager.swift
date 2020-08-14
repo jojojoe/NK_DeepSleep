@@ -77,6 +77,8 @@ public class PurchaseManager {
                 guard let receiptInfo = receiptInfo else { return false }
                 
                 let subscriptionIDList = Set([IAPType.year.rawValue, IAPType.month.rawValue, IAPType.halfYear.rawValue])
+                
+                //一次性购买
                 let purchaseInfo = SwiftyStoreKit.verifyPurchase(productId: IAPType.halfYear.rawValue, inReceipt: receiptInfo)
                 switch purchaseInfo {
                 case let .purchased(item):
