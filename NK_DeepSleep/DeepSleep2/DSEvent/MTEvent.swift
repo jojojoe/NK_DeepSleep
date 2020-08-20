@@ -16,11 +16,14 @@ let ThinkingAnalyticsSDKAppId = "7054bc633e06425eb04dd4aaca4631b5"
 
 class MTEvent: NSObject {
     
+    var thinkingAnalytics: ThinkingAnalyticsSDK?
+    
+    
     @objc
     public static var `default` = MTEvent()
 
     static func prepare() {
-        ThinkingAnalyticsSDK.start(withAppId: ThinkingAnalyticsSDKAppId,
+        MTEvent.default.thinkingAnalytics = ThinkingAnalyticsSDK.start(withAppId: ThinkingAnalyticsSDKAppId,
                                    withUrl: "http://analytics.socialcube.me")
         
         MTEvent.default.tga_eventSuperProperties()
@@ -82,14 +85,14 @@ extension MTEvent {
     /// 登录成功后调用
     @objc
     public func tga_userPropertyLogin(userID: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.logout()
-        ThinkingAnalyticsSDK.sharedInstance()?.login(userID)
+        MTEvent.default.thinkingAnalytics?.logout()
+        MTEvent.default.thinkingAnalytics?.login(userID)
     }
 
     /// 登出或切换账户调用
     @objc
     public func tga_userPropertyLogout() {
-        ThinkingAnalyticsSDK.sharedInstance()?.logout()
+        MTEvent.default.thinkingAnalytics?.logout()
     }
 
     /// 标识用户基础属性，登录成功以及重新获取用户信息成功后需要调用
@@ -98,7 +101,7 @@ extension MTEvent {
     /// - Parameter fanserCount: 当前用户粉过的数量
     /// - Parameter postsCount: 当前用户发的帖子数量
     public func tga_userProperty(userName: String, fansingCount: Int, fanserCount: Int, postsCount: Int) {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_set([
+        MTEvent.default.thinkingAnalytics?.user_set([
             "tta_uname": userName,
             "tta_following": fansingCount,
             "tta_followers": fanserCount,
@@ -112,7 +115,7 @@ extension MTEvent {
     /// - Parameter version: 当前App版本号
     /// - Parameter createTime: 格式化的当前时间， YYYY-MM-DD HH:mm
     public func tga_onceUserProperty(version: String, createTime: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_setOnce([
+        MTEvent.default.thinkingAnalytics?.user_setOnce([
             "ds_version": version,
             "ds_create_time": createTime,
         ])
@@ -121,7 +124,7 @@ extension MTEvent {
     /// 归因回传
     /// - Parameter channel: 来源，通过adjust获取
     public func tga_userPropertyForChannel(channel: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_set([
+        MTEvent.default.thinkingAnalytics?.user_set([
             "ds_channel": channel,
         ])
     }
@@ -136,7 +139,7 @@ extension MTEvent {
     /// - Parameter status: 购买状态，active/expired/cancel
     /// - Parameter productId: 购买项：iap id
     public func tga_userPropertyForPurchase(status: tga_userPropertyForPurchaseType, productId: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_set([
+        MTEvent.default.thinkingAnalytics?.user_set([
             "ds_buy_status": status.rawValue,
             "ds_buy_item": productId,
         ])
@@ -151,7 +154,7 @@ extension MTEvent {
     /// 200：48小时内或进入订阅面次数在5-10次；
     /// 100：超过48小时或进入订阅面次数大于10次；"
     public func tga_userPropertyForUserType(userType: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_set([
+        MTEvent.default.thinkingAnalytics?.user_set([
             "tta_user_type": userType,
         ])
     }
@@ -159,14 +162,14 @@ extension MTEvent {
     /// 用户之前的user type
     /// - Parameter userType: type
     public func tga_userPropertyForUserPreType(userType: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_set([
+        MTEvent.default.thinkingAnalytics?.user_set([
             "tta_prev_usertype": userType,
         ])
     }
     
     /// 累计进入订阅面次数
     public func tga_userPropertyIncreaseEnterPageCount() {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_add([
+        MTEvent.default.thinkingAnalytics?.user_add([
             "ds_sum_subpage_enter" : 1
         ])
     }
@@ -174,7 +177,7 @@ extension MTEvent {
     /// 记录第一次刷新耗时
     /// - Parameter duration: 第一次成功刷新所需时间，秒
     public func tga_userPropertyForFirstRefreshDuration(duration: Int) {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_set([
+        MTEvent.default.thinkingAnalytics?.user_set([
             "ds_refresh_duration_first": duration,
         ])
     }
@@ -182,14 +185,14 @@ extension MTEvent {
     /// 记录刷新耗时
     /// - Parameter duration: 最近一次刷新所需时间，秒
     public func tga_userPropertyForRefreshDuration(duration: Int) {
-        ThinkingAnalyticsSDK.sharedInstance()?.user_set([
+        MTEvent.default.thinkingAnalytics?.user_set([
             "tta_refresh_duration_current": duration,
         ])
     }
 
     /// 设置所有事件公用属性
     public func tga_eventSuperProperties() {
-        ThinkingAnalyticsSDK.sharedInstance()?.setSuperProperties([
+        MTEvent.default.thinkingAnalytics?.setSuperProperties([
             "ds_eparam_channel": Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
         ])
@@ -203,7 +206,7 @@ extension MTEvent {
 extension MTEvent {
     @objc
     public func tga_eventSoundShow() {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_sound_show", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_sound_show", properties: [
 
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
@@ -213,7 +216,7 @@ extension MTEvent {
 
     @objc
        public func tga_eventRandommixClick() {
-           ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_randommix_click", properties: [
+           MTEvent.default.thinkingAnalytics?.track("ds_event_randommix_click", properties: [
 
                "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
                "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
@@ -223,7 +226,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventSoundClick(itemName: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_sound_click", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_sound_click", properties: [
 
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
@@ -234,7 +237,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventMeditationShow() {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_meditation_show", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_meditation_show", properties: [
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
         ])
@@ -243,7 +246,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventMeditationItemClick(itemName: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_meditationitem_click", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_meditationitem_click", properties: [
 
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
@@ -253,7 +256,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventAccountShow() {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_account_show", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_account_show", properties: [
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
         ])
@@ -262,7 +265,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventAccountItemClick(itemName: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_accountitem_click", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_accountitem_click", properties: [
 
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
@@ -272,7 +275,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventFavoriteShow() {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_favorite_show", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_favorite_show", properties: [
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
         ])
@@ -281,7 +284,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventConsoleClick(index: Int) {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_console_click", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_console_click", properties: [
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
             "ds_eparam_console_poistion": index,
@@ -290,7 +293,7 @@ extension MTEvent {
     
     @objc
        public func tga_eventConsoleDelete(index: Int) {
-           ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_console_delete", properties: [
+           MTEvent.default.thinkingAnalytics?.track("ds_event_console_delete", properties: [
                "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
                "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
                "ds_eparam_console_poistion": index,
@@ -299,7 +302,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventConsoleVolume() {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_console_volume", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_console_volume", properties: [
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
             
@@ -309,7 +312,7 @@ extension MTEvent {
     //sound，favorite，topbar，meditation
     @objc
     public func tga_event_purchaseShow(itemName: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_purchase_page", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_purchase_page", properties: [
 
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
@@ -320,7 +323,7 @@ extension MTEvent {
     
     @objc
     public func tga_eventPurchaseInit(iapItem: String, source: String) {
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_purchase_init", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_purchase_init", properties: [
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
             "ds_eparam_purchase_iap": iapItem,
@@ -336,7 +339,7 @@ extension MTEvent {
         let timeStamp = Date().timeIntervalSince1970
         let duration = Int(timeStamp) - Int(installDate)
         
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_purchase_finish", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_purchase_finish", properties: [
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
             "ds_eparam_purchase_iap": productId,
@@ -356,7 +359,7 @@ extension MTEvent {
 //
 //        let timeStamp = Date().timeIntervalSince1970
 //        let duration = Int(timeStamp) - Int(installDate)
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_purchase_finish", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_purchase_finish", properties: [
 //            "tta_eparam_purchase_iap": productId,
 //            "tta_eparam_purchase_prepage": source,
 //            "tta_eparam_purchase_result": result ? 0 : 1,
@@ -378,7 +381,7 @@ extension MTEvent {
         } else {
             status = 1
         }
-        ThinkingAnalyticsSDK.sharedInstance()?.track("ds_event_session", properties: [
+        MTEvent.default.thinkingAnalytics?.track("ds_event_session", properties: [
             "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
             "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
             "ds_eparam_isfirst_open": status,
@@ -407,7 +410,7 @@ extension MTEvent {
 //    @objc
 //
 //    func tga_eventSearchAccount(searchResoult: Int, searchSource: String) {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_search", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_search", properties: [
 //
 //            "tta_eparam_search_result": searchResoult,
 //            "tta_eparam_search_source": searchSource,
@@ -423,7 +426,7 @@ extension MTEvent {
 ////
 ////        let loginTime = UserDefaults.standard.integer(forKey: "loginTime_enterBackground")
 ////        let result = timeStamp - loginTime
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_logout", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_logout", properties: [
 //            "tta_eparam_logout_onlinetime": onlineDuration,
 //        ])
 //    }
@@ -433,7 +436,7 @@ extension MTEvent {
 //    @objc
 //    public func tga_eventProfileShow() {
 //
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_profile_show")
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_profile_show")
 //    }
 //
 //    /// profile item click
@@ -441,7 +444,7 @@ extension MTEvent {
 //    @objc
 //    public func tga_eventProfileItemClick(item: String) {
 //
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_profileitem_click", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_profileitem_click", properties: [
 //            "tta_eparam_profileitem_name": item,
 //
 //        ])
@@ -451,14 +454,14 @@ extension MTEvent {
 //
 //    @objc
 //    public func tga_eventInsightsShow() {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_insights_show")
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_insights_show")
 //    }
 //
 //    /// tta_event_insightsitem_click
 //    /// topbar,trending,posts_insights,hashtags_insights
 //    @objc
 //    public func tga_eventInsightsItemClick(item: String) {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_insightsitem_click", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_insightsitem_click", properties: [
 //            "tta_eparam_insightitem_name": item,
 //        ])
 //    }
@@ -467,7 +470,7 @@ extension MTEvent {
 //    /// creators,videos,sounds
 //    @objc
 //    public func tga_eventTrendingItemClick(item: String) {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_trendingitem_click", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_trendingitem_click", properties: [
 //            "tta_eparam_trendingitem_name": item,
 //        ])
 //    }
@@ -476,7 +479,7 @@ extension MTEvent {
 //    /// success，failed，notfound
 //    @objc
 //    public func tga_eventHashtagSearch(result: String) {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_hashtagsearch", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_hashtagsearch", properties: [
 //            "tta_eparam_hashtagsearch_result": result,
 //        ])
 //    }
@@ -485,14 +488,14 @@ extension MTEvent {
 //    /// success，failed，notfound
 //    @objc
 //    public func tga_eventSettingShow() {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_setting_show")
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_setting_show")
 //    }
 //
 //    /// tta_event_settingitem_click
 //    /// upgrade,switch_account,restore,rating,privacy
 //    @objc
 //    public func tga_eventSettingItemClick(item: String) {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_settingitem_click", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_settingitem_click", properties: [
 //            "tta_eparam_settingitem_name": item,
 //        ])
 //    }
@@ -501,7 +504,7 @@ extension MTEvent {
 //    /// account,engagement,topbar,posts_insights,hashtags_insights,upgradge
 //
 //    public func tga_eventEnterStorePage(source: String) {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_purchase_page", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_purchase_page", properties: [
 //            "tta_eparam_purchase_prepage": source,
 //        ])
 //    }
@@ -510,7 +513,7 @@ extension MTEvent {
 //    /// com.xxx.30days etc
 //    @objc
 //    public func tga_eventPurchaseInit(iapItem: String, source: String) {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_purchase_init", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_purchase_init", properties: [
 //            "tta_eparam_purchase_iap": iapItem,
 //            "tta_eparam_purchase_prepage": source,
 //        ])
@@ -525,7 +528,7 @@ extension MTEvent {
 //
 //        let timeStamp = Date().timeIntervalSince1970
 //        let duration = Int(timeStamp) - Int(installDate)
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_purchase_finish", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_purchase_finish", properties: [
 //            "tta_eparam_purchase_iap": productId,
 //            "tta_eparam_purchase_prepage": source,
 //            "tta_eparam_purchase_result": result ? 0 : 1,
@@ -540,7 +543,7 @@ extension MTEvent {
 //    /// com.xxx.30days etc
 //    @objc
 //    public func tga_eventTterror(tterror: String) {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_tterror", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_tterror", properties: [
 //            "tta_eparam_error": tterror,
 //        ])
 //    }
@@ -549,7 +552,7 @@ extension MTEvent {
 //    /// com.xxx.30days etc
 //    @objc
 //    public func tga_eventSession() {
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_session")
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_session")
 //    }
 //
 //    /// tta_event_profileitem_leave
@@ -563,7 +566,7 @@ extension MTEvent {
 //        let loginTime = UserDefaults.standard.integer(forKey: "Duration_ProfileitemStartTime")
 //        let duration = timeStamp - loginTime
 //
-//        ThinkingAnalyticsSDK.sharedInstance()?.track("tta_event_profileitem_leave", properties: [
+//        MTEvent.default.thinkingAnalytics?.track("tta_event_profileitem_leave", properties: [
 //            "tta_eparam_profileitem_duration": duration > 0 ? duration : 1
 //        ])
 //    }
