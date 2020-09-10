@@ -13,6 +13,25 @@ import Defaults
 struct DeepSleepResource: Codable {
     let scene: [SceneBundle]?
     let sound: [SoundBundle]?
+    let scene_plan: [SevenPlanItem]?
+}
+
+
+
+struct SevenPlanItem: Codable {
+    let day: Int?
+    var music_url: String? 
+    let cover_url: String?
+    let bg_video_url: String?
+    let cover_desc: String? //[String:String]?
+    let day_desc: String? //[String:String]?
+    
+    func dayDesc() -> [String: String]? {
+        if let dict: [String: String] = day_desc?.toDictionary as? [String: String] {
+            return dict
+        }
+        return nil
+    }
 }
 
 struct SceneBundle: Codable {
@@ -22,6 +41,8 @@ struct SceneBundle: Codable {
     let img_bg: String?
     let is_free: Int?
     let musics: [MusicItem]?
+    let category_id: Int?
+    let category_name: String?
 }
 
 struct SoundBundle: Codable {
@@ -39,8 +60,7 @@ struct MusicItem: Codable {
     let is_free: Int?
 }
 
-
-
+ 
 class Request: NSObject {
     static let `default` = Request()
     override init() {

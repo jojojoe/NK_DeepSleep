@@ -71,12 +71,7 @@ class DSSencePlayVC: UIViewController, UIGestureRecognizerDelegate {
             }
             
             updatePlayBtnStatus(isPlaying: true)
-//            if currenCountDownTime == "∞" {
-//                
-//            } else {
-//                DSSencePlayerManager.default.startPlayerCountDownTimer()
-//                
-//            }
+ 
             
             musicCollection.reloadData()
         }
@@ -308,11 +303,44 @@ extension DSSencePlayVC {
         DSSencePlayerManager.default.changePlayerStatus(isPause: true)
         DSSencePlayerManager.default.pausePlayerCountDownTimer()
         DSSencePlayerManager.default.clearCurrentMusicItem()
+        topBgImageView.layer.removeAllAnimations()
     }
     
 }
 
 extension DSSencePlayVC {
+    func setupBgKeyAnimation() {
+        
+        
+        topBgImageView.layer.add(createAnimation(keyPath: "transform.scale", toValue: 1.5), forKey: nil)
+    }
+    
+    func createAnimation (keyPath: String, toValue: CGFloat) -> CABasicAnimation {
+        //创建动画对象
+        let scaleAni = CABasicAnimation()
+        //设置动画属性
+        scaleAni.keyPath = keyPath
+        
+        //设置动画的起始位置。也就是动画从哪里到哪里。不指定起点，默认就从positoin开始
+        scaleAni.toValue = toValue
+        
+        //动画持续时间
+        scaleAni.duration = 20;
+        
+        //动画重复次数
+        scaleAni.repeatCount = Float(CGFloat.infinity)
+        
+        scaleAni.autoreverses = true
+        
+        return scaleAni;
+    }
+}
+
+extension DSSencePlayVC {
+    
+    
+    
+    
     func setupView() {
         timePickerView.delegate = self
         timePickerView.dataSource = self
@@ -320,6 +348,13 @@ extension DSSencePlayVC {
         setupSettingBlurView()
         setupCollectionCell()
         setupDefaultCountDownTime()
+        
+        //
+        setupBgKeyAnimation()
+        
+        //
+        
+        
         
         if let buildinName = DSBuildinManager.default.buildinResourceName(remoteName: senceBundle.img_bg)  {
             topBgImageView.image = UIImage.init(named: buildinName)

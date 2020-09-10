@@ -213,6 +213,47 @@ public class DSDownloadHelper: NSObject {
 }
 
 
+extension DSMeidaLocalCheckManager {
+    static func checkBgVideoLocalUrl(planItem: SevenPlanItem, completion: @escaping ((URL?)->Void), progressBlock: @escaping ((Double)->Void), beginDownloadBlock: @escaping (()->Void)) -> URL? {
+        let type = planItem.bg_video_url?.suffix(3) ?? "mp4"
+        let fileName = "plan7_\(planItem.day ?? 1).\(type)"
+        let path = DSDownloadHelper.default.sessionManager.cache.downloadFilePath.appendingPathComponent(fileName)
+        if FileManager.default.fileExists(atPath: path) {
+            return URL.init(fileURLWithPath: path)
+        } else {
+            
+            if !isNetworkConnect {
+                completion(nil)
+                return nil
+            }
+            if let videoUrl = planItem.bg_video_url {
+                beginDownloadBlock()
+                DSDownloadHelper.default.downloadTask(url: videoUrl, fileName: fileName) { task in
+                    
+                    debugPrint("download filePath = \(String(describing: task?.filePath))")
+                    debugPrint("download fileName = \(String(describing: task?.fileName))")
+                    
+                }
+                
+                DSDownloadHelper.default.taskProgressObserver(url: videoUrl, progress: {  (progressValue) in
+                    
+                    
+                    debugPrint("progress value: \(progressValue)")
+                    debugPrint("*** DSDownloadHelper.default.taskProgressObserver \(progressValue)")
+                    progressBlock(progressValue)
+                }, success: { (successString) in
+                    completion(URL.init(fileURLWithPath: successString))
+                }) { (status) in
+                    
+                }
+                
+                
+            }
+            return nil
+        }
+    }
+}
+
 class DSMeidaLocalCheckManager: NSObject {
     static func checkLocalUrl(music: MusicItem,  completion: @escaping ((URL?)->Void), progressBlock: @escaping ((Double)->Void), beginDownloadBlock: @escaping (()->Void)) -> URL? {
         

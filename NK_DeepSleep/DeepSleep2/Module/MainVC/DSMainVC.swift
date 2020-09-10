@@ -19,7 +19,7 @@ class DSMainVC: UIViewController {
     
     @IBOutlet var bottomActionBtns: [UIButton]!
     var contentViews: [UIView] = []
-    var meditationVC: DSMediatationVC = DSMediatationVC()
+    var meditationVC: DSSenceVC = DSSenceVC()
     var soundsVC: DSSoundsVC = DSSoundsVC()
     var accountVC: DSAccountVC = DSAccountVC()
     var meditationView: UIView?
@@ -54,6 +54,7 @@ class DSMainVC: UIViewController {
     @IBOutlet weak var soundBtn: UIButton!
     @IBAction func soundBtnClick(_ sender: UIButton) {
         guard let soundsView = soundsView else { return }
+        showSplash()
         showContent(vc: soundsVC, contentView: soundsView, actionBtn: soundBtn)
     }
     @IBOutlet weak var accountBtn: UIButton!
@@ -69,7 +70,7 @@ class DSMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showSplash()
+        
         loadData()
         setupCanvasView()
         showDefaultStatus()
@@ -100,8 +101,6 @@ extension DSMainVC {
     
     func showSplash() {
         
-        
-        
         if let isHasShowSplash = Defaults[.isHasShowSplash], isHasShowSplash == true {
             splashBgView.isHidden = true
         } else {
@@ -119,8 +118,6 @@ extension DSMainVC {
             
             splashContentImageView.image = UIImage.named(splashList[currentSplashIndex])
             
-            
-
         }
     }
     
@@ -130,7 +127,7 @@ extension DSMainVC {
         var isShouldRequest: Bool = true
         if let lastDate = Defaults[.recentlyRequestResourceDataDate] {
             let hours = Date().hoursSince(lastDate)
-            if hours < 12 {
+            if hours < 24 {
                 isShouldRequest = false
             }
         }
@@ -147,8 +144,6 @@ extension DSMainVC {
                 HUD.error(error)
             }
         }
-        
-        
     }
     
     func setupCanvasView() {
@@ -234,8 +229,10 @@ extension DSMainVC {
     
     func showDefaultStatus() {
         
-        guard let soundsView = soundsView else { return }
-        showContent(vc: soundsVC, contentView: soundsView, actionBtn: soundBtn)
+        guard let meditationView = meditationView else { return }
+//        showContent(vc: soundsVC, contentView: soundsView, actionBtn: soundBtn)
+        
+        showContent(vc: meditationVC, contentView: meditationView, actionBtn: meditationBtn)
     }
     
 }

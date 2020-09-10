@@ -17,7 +17,7 @@ class DSSenceCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        nameLabel.font(13, UIFont.FontNames.Quicksand_Medium)
+        nameLabel.font(12, UIFont.FontNames.Quicksand_Medium)
     }
     
     

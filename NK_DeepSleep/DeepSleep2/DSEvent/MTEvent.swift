@@ -389,6 +389,32 @@ extension MTEvent {
         
     }
     
+    
+    
+    @objc
+    public func tga_eventPlan7Day_Click() {
+        
+        MTEvent.default.thinkingAnalytics?.track("ds_event_7day_click", properties: [
+            "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
+            "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
+            
+        ])
+        
+    }
+    
+    @objc
+    public func tga_eventPlan7Day_Start(day: Int = 1) {
+        
+        MTEvent.default.thinkingAnalytics?.track("ds_event_7day_start", properties: [
+            "ds_eparam_channel":  Adjust.attribution()?.trackerName ?? "Organic",
+            "idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString,
+            "ds_eparam_7day_detail": day,
+        ])
+        
+    }
+    
+    
+    
 }
 
 

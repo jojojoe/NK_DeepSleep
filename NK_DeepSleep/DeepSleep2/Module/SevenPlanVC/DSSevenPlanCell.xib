@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DSSevenPlanCell" customModule="DeepSleep" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="266" height="383"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="266" height="383"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5V-l6-t5n">
+                        <rect key="frame" x="0.0" y="0.0" width="266" height="383"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OgD-q9-Qxt">
+                                <rect key="frame" x="0.0" y="0.0" width="266" height="383"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oM-nx-YHB">
+                                <rect key="frame" x="101" y="80" width="64" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your sleep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dP0-a1-5R5">
+                                <rect key="frame" x="78" y="121" width="110" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your sleep" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFV-c2-bss">
+                                <rect key="frame" x="40" y="247" width="186" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXo-u3-k8G">
+                                <rect key="frame" x="68" y="285" width="130" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="1Oe-C4-eu9"/>
+                                    <constraint firstAttribute="height" constant="38" id="cgT-ay-aDD"/>
+                                </constraints>
+                                <state key="normal" title="  Start" image="plan_start_ic">
+                                    <color key="titleColor" red="0.090196078431372548" green="0.078431372549019607" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.5490196078431373" green="0.54117647058823526" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="19"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startBtnClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="BwK-qi-ewg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CXo-u3-k8G" firstAttribute="centerX" secondItem="o5V-l6-t5n" secondAttribute="centerX" id="9vi-NN-rLM"/>
+                            <constraint firstItem="AFV-c2-bss" firstAttribute="leading" secondItem="o5V-l6-t5n" secondAttribute="leading" constant="40" id="DwH-Af-V7E"/>
+                            <constraint firstItem="AFV-c2-bss" firstAttribute="centerX" secondItem="CXo-u3-k8G" secondAttribute="centerX" id="Dxb-bb-NCb"/>
+                            <constraint firstAttribute="bottom" secondItem="CXo-u3-k8G" secondAttribute="bottom" constant="60" id="EGD-GO-dDC"/>
+                            <constraint firstAttribute="trailing" secondItem="OgD-q9-Qxt" secondAttribute="trailing" id="KRT-wq-kBF"/>
+                            <constraint firstItem="OgD-q9-Qxt" firstAttribute="top" secondItem="o5V-l6-t5n" secondAttribute="top" id="Xtu-74-5gR"/>
+                            <constraint firstItem="dP0-a1-5R5" firstAttribute="centerX" secondItem="3oM-nx-YHB" secondAttribute="centerX" id="YtZ-eQ-Jui"/>
+                            <constraint firstItem="3oM-nx-YHB" firstAttribute="centerX" secondItem="o5V-l6-t5n" secondAttribute="centerX" id="aRx-pD-cO3"/>
+                            <constraint firstItem="OgD-q9-Qxt" firstAttribute="leading" secondItem="o5V-l6-t5n" secondAttribute="leading" id="bS8-BC-vJ1"/>
+                            <constraint firstItem="AFV-c2-bss" firstAttribute="bottom" secondItem="CXo-u3-k8G" secondAttribute="top" constant="-16" id="fdS-MY-8lv"/>
+                            <constraint firstItem="3oM-nx-YHB" firstAttribute="top" secondItem="o5V-l6-t5n" secondAttribute="top" constant="80" id="nt5-Ep-KAm"/>
+                            <constraint firstAttribute="bottom" secondItem="OgD-q9-Qxt" secondAttribute="bottom" id="qGd-YW-8rz"/>
+                            <constraint firstItem="dP0-a1-5R5" firstAttribute="top" secondItem="3oM-nx-YHB" secondAttribute="bottom" constant="8" id="r9c-UO-tGO"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="o5V-l6-t5n" secondAttribute="trailing" id="6sC-w1-Ri1"/>
+                <constraint firstItem="o5V-l6-t5n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KM0-AW-VLn"/>
+                <constraint firstAttribute="bottom" secondItem="o5V-l6-t5n" secondAttribute="bottom" id="Ljc-bl-UmH"/>
+                <constraint firstItem="o5V-l6-t5n" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lrA-10-50M"/>
+            </constraints>
+            <size key="customSize" width="266" height="383"/>
+            <connections>
+                <outlet property="bgView" destination="o5V-l6-t5n" id="xaI-O7-C6C"/>
+                <outlet property="bottomInfoLabel" destination="AFV-c2-bss" id="7KK-sw-Ifx"/>
+                <outlet property="coverImageView" destination="OgD-q9-Qxt" id="lj2-ze-GfE"/>
+                <outlet property="startBtn" destination="CXo-u3-k8G" id="18a-Fh-GDf"/>
+                <outlet property="topTitle1" destination="3oM-nx-YHB" id="Hhi-2n-CXY"/>
+                <outlet property="topTitle2" destination="dP0-a1-5R5" id="mkb-zL-7DD"/>
+            </connections>
+            <point key="canvasLocation" x="-18.840579710144929" y="258.14732142857144"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="plan_start_ic" width="20" height="20"/>
+    </resources>
+</document>
