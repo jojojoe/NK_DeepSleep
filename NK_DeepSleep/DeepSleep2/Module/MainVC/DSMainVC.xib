@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSMainVC" customModule="DeepSleep" customModuleProvider="target">
             <connections>
                 <outlet property="accountBtn" destination="7pu-3P-wxm" id="VtA-un-sht"/>
+                <outlet property="bottomBlurBgView" destination="4Cg-hn-JDv" id="HWN-ab-vPx"/>
                 <outlet property="canvasBgView" destination="UAr-P4-vpq" id="dwp-xb-D1a"/>
                 <outlet property="meditationBtn" destination="n9W-9m-ynL" id="keH-Vc-fBm"/>
                 <outlet property="soundBtn" destination="Jnf-7s-p09" id="YjU-rb-QBr"/>
@@ -41,6 +42,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U61-uQ-oiV">
                     <rect key="frame" x="0.0" y="730" width="375" height="48"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-hn-JDv">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                            <color key="backgroundColor" red="0.082352941176470587" green="0.070588235294117646" blue="0.12549019607843137" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TT1-Dk-ECx">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                             <subviews>
@@ -51,7 +56,7 @@
                                     <inset key="titleEdgeInsets" minX="-28" minY="30" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="28" minY="-10" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="Sence" image="tapbar_home_ic_normal">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="selected" image="tapbar_home_ic_seclected">
                                         <color key="titleColor" red="0.085376299919999996" green="0.57328444720000005" blue="0.59160435199999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,7 +72,9 @@
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                     <inset key="titleEdgeInsets" minX="-28" minY="30" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="34" minY="-10" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Sounds" image="tapbar_mix_ic_normal"/>
+                                    <state key="normal" title="Sounds" image="tapbar_mix_ic_normal">
+                                        <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                     <state key="selected" image="tapbar_mix_ic_seclected">
                                         <color key="titleColor" red="0.085376299919999996" green="0.57328444720000005" blue="0.59160435199999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -82,7 +89,9 @@
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                     <inset key="titleEdgeInsets" minX="-30" minY="30" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="15" minY="-10" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Me" image="tapbar_me_ic_normal"/>
+                                    <state key="normal" title="Me" image="tapbar_me_ic_normal">
+                                        <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                     <state key="selected" image="tapbar_me_ic_seclected">
                                         <color key="titleColor" red="0.085376299919999996" green="0.57328444720000005" blue="0.59160435199999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -97,6 +106,10 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="4Cg-hn-JDv" secondAttribute="trailing" id="AbT-hG-o4B"/>
+                        <constraint firstAttribute="bottom" secondItem="4Cg-hn-JDv" secondAttribute="bottom" id="SYJ-5l-wyi"/>
+                        <constraint firstItem="4Cg-hn-JDv" firstAttribute="top" secondItem="U61-uQ-oiV" secondAttribute="top" id="U0U-Kd-Vfn"/>
+                        <constraint firstItem="4Cg-hn-JDv" firstAttribute="leading" secondItem="U61-uQ-oiV" secondAttribute="leading" id="XpU-Jl-azw"/>
                         <constraint firstItem="TT1-Dk-ECx" firstAttribute="top" secondItem="U61-uQ-oiV" secondAttribute="top" id="Y0g-PH-A6k"/>
                         <constraint firstAttribute="height" constant="48" id="esB-bs-s8q"/>
                         <constraint firstAttribute="trailing" secondItem="TT1-Dk-ECx" secondAttribute="trailing" id="hNb-fJ-eiw"/>

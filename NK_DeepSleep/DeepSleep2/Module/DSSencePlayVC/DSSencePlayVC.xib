@@ -40,8 +40,8 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zky-zy-kFN">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_meng_up" translatesAutoresizingMaskIntoConstraints="NO" id="ldH-Cb-Da5">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="194"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_mask_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ldH-Cb-Da5">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWm-IB-s2u">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
@@ -91,7 +91,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="hWB-B5-bAm" secondAttribute="trailing" constant="12" id="3lC-Zv-TWf"/>
                                 <constraint firstItem="cZN-Ze-CW0" firstAttribute="leading" secondItem="6cr-b2-Icn" secondAttribute="leading" constant="12" id="ATK-df-gio"/>
@@ -361,6 +361,7 @@
                 <constraint firstItem="ldH-Cb-Da5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AIx-Pq-7bK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zky-zy-kFN" secondAttribute="trailing" id="Ahr-I4-D5C"/>
                 <constraint firstItem="Bgh-w4-mbi" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Arf-Hd-8pd"/>
+                <constraint firstAttribute="bottom" secondItem="ldH-Cb-Da5" secondAttribute="bottom" id="Ddg-bL-n1u"/>
                 <constraint firstAttribute="bottom" secondItem="zky-zy-kFN" secondAttribute="bottom" id="FTf-Ax-qFT"/>
                 <constraint firstItem="FRB-yn-Dfe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fa8-SG-TMi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kWm-IB-s2u" secondAttribute="trailing" id="O6G-MI-N6f"/>
@@ -369,7 +370,6 @@
                 <constraint firstItem="kWm-IB-s2u" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gAJ-Lw-ija"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kWm-IB-s2u" secondAttribute="bottom" id="iBo-ia-kQh"/>
                 <constraint firstItem="zky-zy-kFN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lKD-xf-yGo"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="ldH-Cb-Da5" secondAttribute="bottom" constant="-150" id="m2a-Hp-shU"/>
                 <constraint firstAttribute="bottom" secondItem="FRB-yn-Dfe" secondAttribute="bottom" id="ow1-OE-hgs"/>
                 <constraint firstItem="kWm-IB-s2u" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="re2-uk-LKS"/>
                 <constraint firstItem="ldH-Cb-Da5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xsr-xq-ej1"/>
@@ -382,8 +382,8 @@
         <image name="back_ic" width="40" height="40"/>
         <image name="close_ic" width="30" height="29"/>
         <image name="cycle_ic" width="46" height="46"/>
-        <image name="edit_meng_up" width="374" height="106"/>
         <image name="play_ic" width="57" height="58"/>
+        <image name="sence_mask_bg" width="375" height="812"/>
         <image name="time_ic" width="20" height="20"/>
     </resources>
 </document>

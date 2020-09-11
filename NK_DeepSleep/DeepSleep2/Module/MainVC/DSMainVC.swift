@@ -16,6 +16,7 @@ import AVFoundation
 
 class DSMainVC: UIViewController {
 
+    @IBOutlet weak var bottomBlurBgView: UIView!
     
     @IBOutlet var bottomActionBtns: [UIButton]!
     var contentViews: [UIView] = []
@@ -70,6 +71,8 @@ class DSMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         loadData()
         setupCanvasView()
@@ -150,6 +153,13 @@ extension DSMainVC {
         addMeditationVC()
         addSoundsVC()
         addAccountVC()
+
+        let blur = APCustomBlurView.init(withRadius: 2)
+        bottomBlurBgView.addSubview(blur)
+        blur.snp.makeConstraints {
+            $0.left.right.bottom.top.equalToSuperview()
+        }
+        
     }
     
     func addMeditationVC() {

@@ -39,8 +39,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_meng_up" translatesAutoresizingMaskIntoConstraints="NO" id="iaR-jW-Ubh">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="106"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sence_mask_bg" translatesAutoresizingMaskIntoConstraints="NO" id="iaR-jW-Ubh">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0i-dU-xdo">
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -100,7 +100,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="jEa-bI-wn3" secondAttribute="trailing" constant="12" id="HXY-gh-SxQ"/>
                         <constraint firstItem="jEa-bI-wn3" firstAttribute="leading" secondItem="tjt-5Q-oE9" secondAttribute="trailing" constant="5" id="JWp-TX-IEn"/>
@@ -314,6 +314,7 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xr2-I9-UKy" secondAttribute="trailing" id="181-yQ-vjL"/>
                 <constraint firstItem="fkM-00-29G" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="1IC-ku-I5f"/>
+                <constraint firstItem="iaR-jW-Ubh" firstAttribute="bottom" secondItem="Xr2-I9-UKy" secondAttribute="bottom" id="2HO-xH-RqM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ytE-06-G6e" secondAttribute="bottom" constant="180" id="4bY-Gg-oVJ"/>
                 <constraint firstItem="ytE-06-G6e" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="4nu-GK-Upu"/>
                 <constraint firstItem="iaR-jW-Ubh" firstAttribute="trailing" secondItem="Xr2-I9-UKy" secondAttribute="trailing" id="6ZA-oC-aJO"/>
@@ -344,8 +345,8 @@
     <resources>
         <image name="back_ic" width="40" height="40"/>
         <image name="close_ic" width="30" height="29"/>
-        <image name="edit_meng_up" width="374" height="106"/>
         <image name="play_ic" width="57" height="58"/>
+        <image name="sence_mask_bg" width="375" height="812"/>
         <image name="time_ic" width="20" height="20"/>
     </resources>
 </document>

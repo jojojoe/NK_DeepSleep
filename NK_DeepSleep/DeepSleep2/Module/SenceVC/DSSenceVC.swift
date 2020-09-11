@@ -8,7 +8,7 @@
 
 import UIKit
 import NoticeObserveKit
-
+import DeviceKit
 class DSSenceVC: UIViewController {
     var montherVC: UIViewController?
     
@@ -74,7 +74,10 @@ class DSSenceVC: UIViewController {
         categoryBundleList = res
         
         var index: CGFloat = 0
-        let perHeight: CGFloat = 200
+        var perHeight: CGFloat = 204
+        if Device.current.diagonal <= 6.5 && Device.current.diagonal >= 5.5 {
+            perHeight = 216
+        }
         let originalX: CGFloat = 0
         let perWidth: CGFloat = UIScreen.width
         let allHeight: CGFloat = perHeight * CGFloat(sortKeys.count)
