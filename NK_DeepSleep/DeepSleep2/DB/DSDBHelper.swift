@@ -38,6 +38,9 @@ public struct DSFavoriteModel: Hashable, Codable {
 class DSDBHelper: NSObject {
     
     static let `default` = DSDBHelper()
+    
+    let historyId: Int64 = 111111111111
+    
     var db: Connection?
     func prepareDB() {
         do {
@@ -81,7 +84,7 @@ extension DSDBHelper {
         }
     }
     
-    /// 床架收藏的音频配置TABLE （对应的会有收藏列表的ID -> favorite_id）
+    /// 创建收藏的音频配置TABLE （对应的会有收藏列表的ID -> favorite_id）
     fileprivate func createFavoriteSoundsTable() {
         let table = Table("FavoriteSounds")
         // 收藏列表主键
@@ -179,6 +182,24 @@ extension DSDBHelper {
         }
         completion?(resultsFavorites)
     }
+    
+    func loadRecordLastHistorySounds(completion: ((_ sounds: [DSFavoriteModel.FavoriteSound])->Void)?) {
+        
+        var sounds: [DSFavoriteModel.FavoriteSound] = []
+        do {
+            if let results = try db?.prepare("select * from FavoriteSounds where favorite_id=\(historyId)") {
+                for row in results {
+                    let sound = DSFavoriteModel.FavoriteSound(faovriteId: row[0] as? Int64 ?? 0, name: row[1] as? String ?? "", icon: row[2] as? String ?? "", remoteUrl: row[3] as? String ?? "", localUrl: row[4] as? String ?? "", volume: row[5] as? Double ?? 0.0)
+                    sounds.append(sound)
+                }
+            }
+        } catch {
+            debugPrint("dberror: load favorites sounds failed")
+        }
+        completion?(sounds)
+    }
+    
+    
 }
 
 extension DSDBHelper {
@@ -187,6 +208,26 @@ extension DSDBHelper {
             let stmtForFavorite = try db?.prepare("INSERT INTO Favorites (id,name,update_date) VALUES (?,?,?)")
             let stmtForSounds = try db?.prepare("INSERT INTO FavoriteSounds (favorite_id,name,icon,remote_url,local_url,volume) VALUES (?,?,?,?,?,?)")
             try stmtForFavorite?.run([favorite.id, favorite.name, favorite.updateTime])
+            for sound in favorite.sounds ?? [] {
+                try stmtForSounds?.run([favorite.id, sound.name, sound.icon, sound.remoteUrl, sound.localUrl, sound.volume])
+            }
+        } catch {
+            debugPrint("dberror: insert fvavorite failed")
+        }
+    }
+}
+
+extension DSDBHelper {
+    func recordLastHistorySounds(favorite: DSFavoriteModel) {
+        do {
+//            deleteFavoriteSoundsData()
+            let table = Table("FavoriteSounds")
+            let db_favoriteId = Expression<Int64>("favorite_id")
+            let alice = table.filter(db_favoriteId == historyId)
+            try db?.run(alice.delete())
+            
+            let stmtForSounds = try db?.prepare("INSERT OR REPLACE INTO FavoriteSounds (favorite_id,name,icon,remote_url,local_url,volume) VALUES (?,?,?,?,?,?)")
+            
             for sound in favorite.sounds ?? [] {
                 try stmtForSounds?.run([favorite.id, sound.name, sound.icon, sound.remoteUrl, sound.localUrl, sound.volume])
             }

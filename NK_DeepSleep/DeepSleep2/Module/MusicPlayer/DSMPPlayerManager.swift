@@ -557,6 +557,27 @@ extension DSMPPlayerManager {
         completion()
     }
     
+    func addLastHistorySoundsAction(completion:(()->Void)) {
+        
+        var soundsList: [DSFavoriteModel.FavoriteSound] = []
+        
+        for index in 0..<audioItemList.count {
+            let item = audioItemList[index]
+            if let audioItem = item.audioItem {
+                let sound = DSFavoriteModel.FavoriteSound.init(faovriteId: Int64(DSDBHelper.default.historyId), name: audioItem.name ?? "1", icon: audioItem.icon_url ?? "", remoteUrl: audioItem.media_url ?? "", localUrl: audioItem.media_url ?? "", volume: Double(item.columeValue ?? defaultVolumeValue))
+                soundsList.append(sound)
+            }
+        }
+        
+        let favoriteItem = DSFavoriteModel.init(id: Int64(DSDBHelper.default.historyId), name: "\(DSDBHelper.default.historyId)", updateTime: Int64(Date().timeIntervalSince1970.int), sounds: soundsList)
+        
+        DSDBHelper.default.recordLastHistorySounds(favorite: favoriteItem)
+        
+        completion()
+    }
+    
+    
+    
     
 }
 

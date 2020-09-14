@@ -27,11 +27,12 @@ class DSSenceVC: UIViewController {
     var categoryBundleList: [Int: [SceneBundle]] = [:]
     var currentSceneList: [SceneBundle] = [] {
         didSet {
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
                 [weak self] in
                 guard let `self` = self else {return}
                 self.setupSenceBgView()
             }
+            
         }
     }
      
@@ -82,11 +83,17 @@ class DSSenceVC: UIViewController {
         let perWidth: CGFloat = UIScreen.width
         let allHeight: CGFloat = perHeight * CGFloat(sortKeys.count)
         senceBgViewHeight.constant = allHeight
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+        self.senceBgView.alpha = 0
+        UIView.animate(withDuration: 0.15, delay: 0.15, options: .curveEaseInOut, animations: {
+            self.senceBgView.alpha = 1
+        }) { (finished) in
+            
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
             [weak self] in
             guard let `self` = self else {return}
             self.senceBgView.removeSubviews()
+            
             for key in sortKeys {
                 debugPrint("key = \(key)")
                 if let bundle = res[key] {
@@ -168,7 +175,9 @@ extension DSSenceVC {
         guard let resourceModel = Request.default.resourceModel else { return }
 //        guard let resourceModel = LoadJsonData.default.loadJson(DeepSleepResource.self, name: "testResource") else { return }
         guard let sceneList = resourceModel.scene else { return }
-        self.currentSceneList = sceneList
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+            self.currentSceneList = sceneList
+        }
     }
     
     

@@ -24,9 +24,10 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3rH-fm-m8q">
                                         <rect key="frame" x="0.0" y="0.0" width="224" height="224"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f8C-jL-l78" secondAttribute="height" multiplier="1:1" id="2DN-bT-uk6"/>
                                     <constraint firstItem="3rH-fm-m8q" firstAttribute="leading" secondItem="f8C-jL-l78" secondAttribute="leading" id="4W5-Si-vE2"/>

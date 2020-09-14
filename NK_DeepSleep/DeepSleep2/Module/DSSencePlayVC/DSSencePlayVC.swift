@@ -548,7 +548,7 @@ extension DSSencePlayVC: PickerViewDelegate, PickerViewDataSource {
         }
         countList.append("∞")
         #if DEBUG
-//        countList.append("1")
+        countList.append("1")
         #endif
         return countList
     }()

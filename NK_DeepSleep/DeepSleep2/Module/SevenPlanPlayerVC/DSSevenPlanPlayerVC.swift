@@ -498,21 +498,7 @@ extension DSSevenPlanPlayerVC {
 
 
 extension DSSevenPlanPlayerVC: PickerViewDelegate, PickerViewDataSource {
-    
-    static var timePickDataList: [String] = {
-        var currentTime: Int = 15
-        var countList: [String] = []
-        
-        while currentTime <= 60 {
-            countList.append(currentTime.string)
-            currentTime += (5)
-        }
-        countList.append("∞")
-        #if DEBUG
-//        countList.append("1")
-        #endif
-        return countList
-    }()
+     
     
     func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
         return DSSencePlayVC.timePickDataList.count

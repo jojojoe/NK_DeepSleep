@@ -109,6 +109,8 @@ class DSSoundsVC: UIViewController {
     }
 
     
+    
+    
 }
 
 extension DSSoundsVC {
@@ -123,7 +125,7 @@ extension DSSoundsVC {
                 guard let `self` = self else {return}
                 self.soundsPreview?.updateCountDownTimer(secound: secoudValue, isHandMoveToZero: false)
                 if secoudValue <= 0 {
-//                    self.soundsPreview?.updateCircularThumbStatus(isPlaying: false)
+
                     self.soundsPreview?.changePreviewStatus(isChangeToStart_m: false)
                 }
                 
@@ -321,23 +323,7 @@ extension DSSoundsVC {
                 self.currentSoundsItemContentVC?.updateCellStatus(itemList: DSMPPlayerManager.default.audioItemList)
             }
         }
-        
-        
-//        if let audioItem = item.audioItem {
-//            let sound = DSFavoriteModel.FavoriteSound.init(faovriteId: Int64(Date().timeIntervalSince1970.int), name: audioItem.name ?? "1", icon: audioItem.icon_url ?? "", remoteUrl: audioItem.media_url ?? "", localUrl: audioItem.media_url ?? "", volume: Double(item.columeValue ?? defaultVolumeValue))
-//            soundsList.append(sound)
-//        }
-        
-        
-//        DSMPPlayerManager.default.randomAudioItems(audoItemList: firstBundle?.sounds ?? []) {
-//            [weak self] in
-//            guard let `self` = self else {return}
-//            DispatchQueue.main.async {
-//                self.soundsPreview?.updateSoundsPreviewWith(itemList: DSMPPlayerManager.default.audioItemList)
-//                self.currentSoundsItemContentVC?.updateCellStatus(itemList: DSMPPlayerManager.default.audioItemList)
-//            }
-//
-//        }
+         
     }
     
     
@@ -451,8 +437,17 @@ extension DSSoundsVC {
             }
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(willResignActiveNotifi), name: UIApplication.willResignActiveNotification, object: nil)
+         
         
     }
+    
+    @objc func willResignActiveNotifi() {
+        DSMPPlayerManager.default.addLastHistorySoundsAction {
+            debugPrint("record history")
+        }
+    }
+    
     
     @objc func getDeepSleepResourceSuccess() {
         guard let resourceModel = Request.default.resourceModel else { return }
@@ -491,7 +486,14 @@ extension DSSoundsVC {
     
     
     func setupData() {
-        
+        DSDBHelper.default.loadRecordLastHistorySounds {[weak self] (soundsList) in
+            guard let `self` = self else {return}
+            self.playFavoriteMusic(items: soundsList)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                Notice.Center.default.post(name: Notice.Names.noti_pauseCurrentSounds, with: nil)
+            }
+            
+        }
         
     }
     
