@@ -59,8 +59,13 @@ extension API:TargetType{
 //        return .requestParameters(parameters: nil, encoding: JSONArrayEncoding.default)
         switch self {
         case .deepSleepMusic:
-            let productID = Bundle.main.bundleIdentifier ?? ""
-            var productID_reverse = Bundle.main.bundleIdentifier ?? ""
+            var productID = Bundle.main.bundleIdentifier ?? ""
+            
+            #if DEBUG
+            productID = "com.deepsleep.sounds"
+            #endif
+            
+            var productID_reverse = productID
             let version = Bundle.main.shortVersion
             let time = CLongLong(round(Date().unixTimestamp*1000))
             

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import NoticeObserveKit
 class DSSevenPlanVC: UIViewController {
 
     @IBOutlet weak var gradientBgView: UIView!
@@ -94,6 +94,9 @@ extension DSSevenPlanVC {
                 self.contentCollection.reloadData()
             }
         }
+        
+        Notice.Center.default.post(name: Notice.Names.noti_pauseCurrentSounds, with: nil)
+        
         let playerVC = DSSevenPlanPlayerVC(planItem: planItem, bgPlaceholder: currentBgVideoImage)
         pushVC(playerVC, animate: true)
         

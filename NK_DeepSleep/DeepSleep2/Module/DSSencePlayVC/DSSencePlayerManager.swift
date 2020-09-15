@@ -146,9 +146,7 @@ class DSSencePlayerManager: NSObject {
 extension DSSencePlayerManager {
     func startPlayerMusicItem(musicItem: MusicItem, musicList: [MusicItem]) {
         
-        
-        
-        
+         
         debugPrint("*** DSMeidaLocalCheckManager.checkLocalUrl musicItem = \(musicItem.name) -- url: \(musicItem.media_url)")
         
         let url = DSMeidaLocalCheckManager.checkLocalUrl(music: musicItem, completion: { [weak self] (musicUrl) in

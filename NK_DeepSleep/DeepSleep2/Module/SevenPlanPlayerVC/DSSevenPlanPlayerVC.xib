@@ -73,9 +73,8 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkM-00-29G">
-                    <rect key="frame" x="147" y="393" width="120" height="120"/>
+                    <rect key="frame" x="147" y="385" width="120" height="120"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="fkM-00-29G" secondAttribute="height" id="Sxh-1e-tfU"/>
                         <constraint firstAttribute="width" constant="120" id="lii-D8-VHa"/>
                     </constraints>
                     <state key="normal" image="play_ic"/>
@@ -323,7 +322,7 @@
                 <constraint firstItem="G1X-TG-uuu" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="FEq-4y-Cj6"/>
                 <constraint firstItem="Xr2-I9-UKy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Lop-lt-YAq"/>
                 <constraint firstItem="fkM-00-29G" firstAttribute="width" secondItem="fkM-00-29G" secondAttribute="height" id="Loq-6O-lnp"/>
-                <constraint firstItem="fkM-00-29G" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Q53-v8-3ZZ"/>
+                <constraint firstItem="fkM-00-29G" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-8" id="Q53-v8-3ZZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="G1X-TG-uuu" secondAttribute="trailing" id="S8i-3z-jpw"/>
                 <constraint firstItem="Xr2-I9-UKy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SqG-6g-R4T"/>
                 <constraint firstItem="iaR-jW-Ubh" firstAttribute="top" secondItem="Xr2-I9-UKy" secondAttribute="top" id="TZ8-Kn-xsg"/>
@@ -345,7 +344,7 @@
     <resources>
         <image name="back_ic" width="40" height="40"/>
         <image name="close_ic" width="30" height="29"/>
-        <image name="play_ic" width="57" height="58"/>
+        <image name="play_ic" width="36" height="37"/>
         <image name="sence_mask_bg" width="375" height="812"/>
         <image name="time_ic" width="20" height="20"/>
     </resources>

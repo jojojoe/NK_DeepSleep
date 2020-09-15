@@ -13,6 +13,9 @@ import MediaPlayer
 import SwifterSwift
 
 class DSSencePlayVC: UIViewController, UIGestureRecognizerDelegate {
+    
+    var isPauseBtnStopPlayerStream: Bool = false
+    
     @IBOutlet weak var topBgImageView: UIImageView!
     @IBOutlet weak var backBtn: UIButton!
     @IBAction func backBtnClick(_ sender: UIButton) {
@@ -33,6 +36,15 @@ class DSSencePlayVC: UIViewController, UIGestureRecognizerDelegate {
             DSSencePlayerManager.default.changePlayerStatus(isPause: true)
             DSSencePlayerManager.default.pausePlayerCountDownTimer()
             musicCollection.reloadData()
+            
+            //暂停 加载
+            if self.loadingIndicatorView.isHidden == false {
+                DSSencePlayerManager.default.avPlayer.stopStreamingRemoteAudio()
+                self.loadingIndicatorView.isHidden = true
+                self.isPauseBtnStopPlayerStream = true
+            }
+            
+            
         } else {
             // 当前是 暂停 播放状态 ->更改未 开始
             
@@ -40,7 +52,11 @@ class DSSencePlayVC: UIViewController, UIGestureRecognizerDelegate {
                 resetupCountDownTime(value: "30", isFireNow: false)
 //                DSSencePlayerManager.default.resetStartCountDownTimer(countDownValue: 30, isFireNow: false)
             }
-            if let _ = DSSencePlayerManager.default.currentMusicItem {
+            if let item = DSSencePlayerManager.default.currentMusicItem {
+                if isPauseBtnStopPlayerStream == true {
+                    DSSencePlayerManager.default.startPlayerMusicItem(musicItem: item, musicList: musicItemList)
+                }
+                
                 DSSencePlayerManager.default.changePlayerStatus(isPause: false)
             } else {
                 if let currenMusicItem = currenMusicItem {
@@ -304,6 +320,9 @@ extension DSSencePlayVC {
         DSSencePlayerManager.default.pausePlayerCountDownTimer()
         DSSencePlayerManager.default.clearCurrentMusicItem()
         topBgImageView.layer.removeAllAnimations()
+        
+        DSSencePlayerManager.default.avPlayer.stopStreamingRemoteAudio()
+        self.loadingIndicatorView.isHidden = true
     }
     
 }

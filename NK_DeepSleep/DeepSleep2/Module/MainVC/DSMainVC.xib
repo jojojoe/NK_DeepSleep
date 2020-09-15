@@ -154,11 +154,6 @@
                 <constraint firstItem="blm-Wx-EmH" firstAttribute="trailing" secondItem="U61-uQ-oiV" secondAttribute="trailing" id="vJp-tG-gZT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="JAT-XE-uYi"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="139" y="154"/>
         </view>
     </objects>
