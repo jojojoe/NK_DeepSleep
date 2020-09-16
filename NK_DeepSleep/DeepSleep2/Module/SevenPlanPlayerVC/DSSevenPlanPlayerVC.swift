@@ -25,6 +25,7 @@ class DSSevenPlanPlayerVC: UIViewController {
     var player : AVPlayer!
     var playerLayer : AVPlayerLayer!
     
+    var isCurrentDisplay: Bool = false
     
     @IBOutlet weak var backBtn: UIButton!
     @IBAction func backBtnClick(_ sender: UIButton) {
@@ -182,14 +183,22 @@ class DSSevenPlanPlayerVC: UIViewController {
             clearPauseCurrentMusic()
         }
         gesturePopBegin = false
+        isCurrentDisplay = false
+        self.removeAllCommand()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         gesturePopBegin = false
+        
     }
      
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupRemoteTransportControls()
+        isCurrentDisplay = true
+    }
+     
 }
 
 extension DSSevenPlanPlayerVC {
@@ -202,9 +211,10 @@ extension DSSevenPlanPlayerVC {
 //            self.loadingIndicatorView.isHidden = false
 //            self.loadingIndicatorView.startAnimating()
             
-            ZKProgressHUD.setMaskStyle(.visible)
+            ZKProgressHUD.setMaskStyle(.hide)
             ZKProgressHUD.setEffectAlpha(0)
             ZKProgressHUD.show()
+            self.playBtn.isUserInteractionEnabled = false
         }
         DSSencePlayerManager.default.currenPlayStatusEndBufferBlock = {
             //            self.countDownSetBtn.isHidden = false
@@ -212,6 +222,7 @@ extension DSSevenPlanPlayerVC {
 //            self.loadingIndicatorView.isHidden = true
 //            self.loadingIndicatorView.stopAnimating()
             ZKProgressHUD.dismiss()
+            self.playBtn.isUserInteractionEnabled = true
         }
     }
     func startPlayer() {
@@ -369,6 +380,10 @@ extension DSSevenPlanPlayerVC {
         DSSencePlayerManager.default.changePlayerStatus(isPause: true)
         DSSencePlayerManager.default.pausePlayerCountDownTimer()
         DSSencePlayerManager.default.clearCurrentMusicItem()
+        
+        ZKProgressHUD.dismiss()
+        playBtn.isUserInteractionEnabled = true
+        DSSencePlayerManager.default.avPlayer.stopStreamingRemoteAudio()
     }
     
 }
@@ -429,46 +444,55 @@ extension DSSevenPlanPlayerVC {
 
 extension DSSevenPlanPlayerVC {
     
+    func removeAllCommand() {
+        MPRemoteCommandCenter.shared().playCommand.removeTarget(self)
+        MPRemoteCommandCenter.shared().pauseCommand.removeTarget(self)
+        
+    }
+    
+    ////////
+    @objc func remoteCommandPlayAction(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        DSSencePlayerManager.default.changePlayerStatus(isPause: false)
+        if isCurrentDisplay == true {
+            //
+            if DSSencePlayerManager.default.countDownTimer?.secondsToEnd ?? 0 <= 0 {
+                resetupCountDownTime(value: "30", isFireNow: false)
+                 
+            }
+            DSSencePlayerManager.default.changePlayerStatus(isPause: false)
+            updatePlayBtnStatus(isPlaying: true)
+            
+            //
+        }
+        
+        
+        
+        
+        return .success
+    }
+    @objc func remoteCommandPauseAction(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        DSSencePlayerManager.default.changePlayerStatus(isPause: true)
+
+        //
+        updatePlayBtnStatus(isPlaying: false)
+        DSSencePlayerManager.default.changePlayerStatus(isPause: true)
+        DSSencePlayerManager.default.pausePlayerCountDownTimer()
+        
+        //
+        
+        
+        return .success
+    }
+    
+    ///////
+    
     func setupRemoteTransportControls() {
         // Get the shared MPRemoteCommandCenter
         let commandCenter = MPRemoteCommandCenter.shared()
         
-        // Add handler for Play Command
-        commandCenter.playCommand.addTarget { [unowned self] event in
-            
-            DSSencePlayerManager.default.changePlayerStatus(isPause: false)
-            return .success
-            
-//            if DSSencePlayerManager.default.avPlayer.rate == 0.0 {
-//                DSSencePlayerManager.default.changePlayerStatus(isPause: false)
-//                return .success
-//            }
-//            return .commandFailed
-        }
-        
-        // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
-            DSSencePlayerManager.default.changePlayerStatus(isPause: true)
-            return .success
-            
-//            if DSSencePlayerManager.default.avPlayer.rate == 1.0 {
-//                DSSencePlayerManager.default.changePlayerStatus(isPause: true)
-//                return .success
-//            }
-//            return .commandFailed
-        }
-        
-        // Add handler for Next Command
-        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
-            DSSencePlayerManager.default.nextMusic()
-            return .success
-        }
-        
-        // Add handler for Previous Command
-        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
-            DSSencePlayerManager.default.previousMusic()
-            return .success
-        }
+        commandCenter.playCommand.addTarget(self, action: #selector(remoteCommandPlayAction(event:)))
+        commandCenter.pauseCommand.addTarget(self, action: #selector(remoteCommandPauseAction(event:)))
+         
     }
     
     func updateNowPlaying(with musicItem: MusicItem?) {
@@ -480,7 +504,7 @@ extension DSSevenPlanPlayerVC {
         
         nowPlayingInfo[MPMediaItemPropertyTitle] = musicItem?.name ?? "DeepSleep"
         
-        if let image = UIImage.named("Bedtime") {
+        if let image = UIImage.named("icon_small") {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { _ -> UIImage in
                 return image
             })

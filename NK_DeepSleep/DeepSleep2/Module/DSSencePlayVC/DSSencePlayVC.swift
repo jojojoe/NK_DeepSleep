@@ -199,6 +199,9 @@ class DSSencePlayVC: UIViewController, UIGestureRecognizerDelegate {
             clearPauseCurrentMusic()
         }
         gesturePopBegin = false
+        self.removeAllCommand()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -209,7 +212,7 @@ class DSSencePlayVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupRemoteTransportControls()
+//        setupRemoteTransportControls()
         initPlayerCountDownTimer()
         setupSencePlayerLoopType()
         countDownTimeLabel.font(16, UIFont.FontNames.Quicksand_Medium)
@@ -225,6 +228,7 @@ class DSSencePlayVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        setupRemoteTransportControls()
                         
         //推断是否为第一个view
         if (self.navigationController != nil && self.navigationController?.viewControllers.count == 1) {
@@ -232,6 +236,8 @@ class DSSencePlayVC: UIViewController, UIGestureRecognizerDelegate {
         }
         
     }
+    
+
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         debugPrint("***** gestureRecognizerShouldBegin")
@@ -631,46 +637,58 @@ extension DSSencePlayVC: PickerViewDelegate, PickerViewDataSource {
 
 extension DSSencePlayVC {
     
+    func removeAllCommand() {
+        MPRemoteCommandCenter.shared().playCommand.removeTarget(self)
+        MPRemoteCommandCenter.shared().pauseCommand.removeTarget(self)
+        
+    }
+    
+    
+    ////////
+    @objc func remoteCommandPlayAction(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        DSSencePlayerManager.default.changePlayerStatus(isPause: false)
+        
+        //
+        if DSSencePlayerManager.default.countDownTimer?.secondsToEnd ?? 0 <= 0 {
+            resetupCountDownTime(value: "30", isFireNow: false)
+             
+        }
+        DSSencePlayerManager.default.changePlayerStatus(isPause: false)
+        
+        updatePlayBtnStatus(isPlaying: true)
+        
+        
+        
+        //
+        
+        
+        
+        return .success
+    }
+    @objc func remoteCommandPauseAction(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        DSSencePlayerManager.default.changePlayerStatus(isPause: true)
+
+        //
+        updatePlayBtnStatus(isPlaying: false)
+        DSSencePlayerManager.default.changePlayerStatus(isPause: true)
+        DSSencePlayerManager.default.pausePlayerCountDownTimer()
+        
+        //
+        
+        
+        return .success
+    }
+    
+    ///////
+    
     func setupRemoteTransportControls() {
         // Get the shared MPRemoteCommandCenter
         let commandCenter = MPRemoteCommandCenter.shared()
         
-        // Add handler for Play Command
-        commandCenter.playCommand.addTarget { [unowned self] event in
-            
-            DSSencePlayerManager.default.changePlayerStatus(isPause: false)
-            return .success
-            
-//            if DSSencePlayerManager.default.avPlayer.rate == 0.0 {
-//                DSSencePlayerManager.default.changePlayerStatus(isPause: false)
-//                return .success
-//            }
-//            return .commandFailed
-        }
+        commandCenter.playCommand.addTarget(self, action: #selector(remoteCommandPlayAction(event:)))
+        commandCenter.pauseCommand.addTarget(self, action: #selector(remoteCommandPauseAction(event:)))
         
-        // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
-            DSSencePlayerManager.default.changePlayerStatus(isPause: true)
-            return .success
-            
-//            if DSSencePlayerManager.default.avPlayer.rate == 1.0 {
-//                DSSencePlayerManager.default.changePlayerStatus(isPause: true)
-//                return .success
-//            }
-//            return .commandFailed
-        }
-        
-        // Add handler for Next Command
-        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
-            DSSencePlayerManager.default.nextMusic()
-            return .success
-        }
-        
-        // Add handler for Previous Command
-        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
-            DSSencePlayerManager.default.previousMusic()
-            return .success
-        }
+         
     }
     
     func updateNowPlaying(with musicItem: MusicItem?) {
@@ -682,7 +700,7 @@ extension DSSencePlayVC {
         
         nowPlayingInfo[MPMediaItemPropertyTitle] = musicItem?.name ?? "DeepSleep"
         
-        if let image = UIImage.named("Bedtime") {
+        if let image = UIImage.named("icon_small") {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { _ -> UIImage in
                 return image
             })

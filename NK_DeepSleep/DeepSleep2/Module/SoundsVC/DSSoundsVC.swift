@@ -69,6 +69,10 @@ class DSSoundsVC: UIViewController {
     
     let maxLableCount: Int = 20
     
+    
+    var playCommandTarget: Any?
+    var pauseCommandTarget: Any?
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
         debugPrint("\(self)已销毁")
@@ -82,7 +86,7 @@ class DSSoundsVC: UIViewController {
         setupView()
         setupCollection()
         initPlayerCountDownTimer()
-        setupRemoteTransportControls()
+//        setupRemoteTransportControls()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +101,12 @@ class DSSoundsVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        setupRemoteTransportControls()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.removeAllCommand()
     }
     
     override func viewDidLayoutSubviews() {
@@ -731,50 +740,83 @@ extension DSSoundsVC: JXSegmentedViewDelegate {
 
 extension DSSoundsVC {
     
+    func removeAllCommand() {
+//        MPRemoteCommandCenter.shared().playCommand.removeTarget(playCommandTarget)
+//        MPRemoteCommandCenter.shared().pauseCommand.removeTarget(pauseCommandTarget)
+        
+        MPRemoteCommandCenter.shared().playCommand.removeTarget(self)
+        MPRemoteCommandCenter.shared().pauseCommand.removeTarget(self)
+    }
+    
+    ////////
+    @objc func remoteCommandPlayAction(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        if DSMPPlayerManager.default.isPause {
+            DSMPPlayerManager.default.changePlayerStatus(isPause: false)
+            self.soundsPreview?.changePreviewStatus(isChangeToStart_m: true)
+        }
+        return .commandFailed
+    }
+    @objc func remoteCommandPauseAction(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        if !DSMPPlayerManager.default.isPause {
+            DSMPPlayerManager.default.changePlayerStatus(isPause: true)
+            self.soundsPreview?.changePreviewStatus(isChangeToStart_m: false)
+            return .success
+        }
+        return .commandFailed
+    }
+    
+    ///////
+    
     func setupRemoteTransportControls() {
         // Get the shared MPRemoteCommandCenter
         let commandCenter = MPRemoteCommandCenter.shared()
         
+        commandCenter.playCommand.addTarget(self, action: #selector(remoteCommandPlayAction(event:)))
+        commandCenter.pauseCommand.addTarget(self, action: #selector(remoteCommandPauseAction(event:)))
+        
+        
+        
         // Add handler for Play Command
-        commandCenter.playCommand.addTarget { [unowned self] event in
-            
-            if DSMPPlayerManager.default.isPause {
-                DSMPPlayerManager.default.changePlayerStatus(isPause: false)
-            }
-            return .commandFailed
-        }
+//        playCommandTarget = commandCenter.playCommand.addTarget { [unowned self] event in
+//
+//            if DSMPPlayerManager.default.isPause {
+//                DSMPPlayerManager.default.changePlayerStatus(isPause: false)
+//                self.soundsPreview?.changePreviewStatus(isChangeToStart_m: true)
+//            }
+//            return .commandFailed
+//        }
+        
+        
         
         // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
-            if !DSMPPlayerManager.default.isPause {
-                DSMPPlayerManager.default.changePlayerStatus(isPause: true)
-                return .success
-            }
-//            if DSSencePlayerManager.default.avPlayer.rate == 1.0 {
-//                DSSencePlayerManager.default.changePlayerStatus(isPause: true)
+//        pauseCommandTarget = commandCenter.pauseCommand.addTarget { [unowned self] event in
+//            if !DSMPPlayerManager.default.isPause {
+//                DSMPPlayerManager.default.changePlayerStatus(isPause: true)
+//
+//                self.soundsPreview?.changePreviewStatus(isChangeToStart_m: false)
+//
 //                return .success
 //            }
-//
-            return .commandFailed
-        }
+//            return .commandFailed
+//        }
         
         // Add handler for Next Command
-        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
-            if let itemList = self.currentSoundsItemContentVC?.currentContentList {
-                self.soundsToolRandomAction()
-                return .success
-            }
-            return .success
-        }
-        
-        // Add handler for Previous Command
-        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
-            if let itemList = self.currentSoundsItemContentVC?.currentContentList {
-                self.soundsToolRandomAction()
-                return .success
-            }
-            return .success
-        }
+//        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
+//            if let itemList = self.currentSoundsItemContentVC?.currentContentList {
+//                self.soundsToolRandomAction()
+//                return .success
+//            }
+//            return .success
+//        }
+//
+//        // Add handler for Previous Command
+//        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
+//            if let itemList = self.currentSoundsItemContentVC?.currentContentList {
+//                self.soundsToolRandomAction()
+//                return .success
+//            }
+//            return .success
+//        }
     }
     
     func updateNowPlaying(with musicItem: MusicItem?) {
@@ -786,7 +828,7 @@ extension DSSoundsVC {
         
         nowPlayingInfo[MPMediaItemPropertyTitle] = musicItem?.name ?? "DeepSleep"
         
-        if let image = UIImage.named("Bedtime") {
+        if let image = UIImage.named("icon_small") {
             nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { _ -> UIImage in
                 return image
             })
