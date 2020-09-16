@@ -30,9 +30,9 @@ class DSSenceVC: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
                 [weak self] in
                 guard let `self` = self else {return}
-                self.setupSenceBgView()
+                
             }
-            
+            self.setupSenceBgView()
         }
     }
      
@@ -89,7 +89,7 @@ class DSSenceVC: UIViewController {
         }) { (finished) in
             
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.05) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0) {
             [weak self] in
             guard let `self` = self else {return}
             self.senceBgView.removeSubviews()
@@ -102,7 +102,12 @@ class DSSenceVC: UIViewController {
                     categoryView.setupData(sceneBundle: bundle)
                     categoryView.frame = CGRect.init(x: originalX, y: originalY, width: perWidth, height: perHeight)
                     self.senceBgView.addSubview(categoryView)
-                    
+                    categoryView.snp.makeConstraints {
+                        $0.left.equalToSuperview().offset(originalX)
+                        $0.top.equalToSuperview().offset(originalY)
+                        $0.width.equalTo(perWidth)
+                        $0.height.equalTo(perHeight)
+                    }
                     categoryView.didSelectSceneBundle = {[weak self] bundle in
                         guard let `self` = self else {return}
                         self.didSelectSence(senceItem: bundle)
@@ -175,9 +180,10 @@ extension DSSenceVC {
         guard let resourceModel = Request.default.resourceModel else { return }
 //        guard let resourceModel = LoadJsonData.default.loadJson(DeepSleepResource.self, name: "testResource") else { return }
         guard let sceneList = resourceModel.scene else { return }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0) {
             self.currentSceneList = sceneList
         }
+        
     }
     
     

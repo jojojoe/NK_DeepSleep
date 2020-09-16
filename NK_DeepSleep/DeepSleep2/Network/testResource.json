@@ -1066,42 +1066,49 @@
         "cover_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_7d_bg_1.jpg",
         "bg_video_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_vedio_1.mp4",
         "cover_desc": "{\"title\":\"7 Day Sleep Plan\",\"desc\":\"Fall asleep fast，start a healthier life\"}",
-        "day_desc": "{\"title\":\"Day 1\",\"desc\":\"Find your sleep\"}"
+        "day_desc": "{\"title\":\"Day 1\",\"desc\":\"Find your sleep\"}",
+        "music_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/Day1.mp3"
     }, {
         "day": 2,
         "cover_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_7d_bg_2.jpg",
         "bg_video_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_vedio_2.mp4",
         "cover_desc": "{\"title\":\"7 Day Sleep Plan\",\"desc\":\"Fall asleep fast，start a healthier life\"}",
-        "day_desc": "{\"title\":\"Day 2\",\"desc\":\"No overthinking before sleep\"}"
+        "day_desc": "{\"title\":\"Day 2\",\"desc\":\"No overthinking before sleep\"}",
+        "music_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/Day2.mp3"
     }, {
         "day": 3,
         "cover_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_7d_bg_3.jpg",
         "bg_video_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_vedio_3.mp4",
         "cover_desc": "{\"title\":\"7 Day Sleep Plan\",\"desc\":\"Fall asleep fast，start a healthier life\"}",
-        "day_desc": "{\"title\":\"Day 3\",\"desc\":\"Try to release\"}"
+        "day_desc": "{\"title\":\"Day 3\",\"desc\":\"Try to release\"}",
+        "music_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/Day3.mp3"
     }, {
         "day": 4,
         "cover_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_7d_bg_4.jpg",
         "bg_video_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_vedio_4.mp4",
         "cover_desc": "{\"title\":\"7 Day Sleep Plan\",\"desc\":\"Fall asleep fast，start a healthier life\"}",
-        "day_desc": "{\"title\":\"Day 4\",\"desc\":\"Fall asleep soon\"}"
+        "day_desc": "{\"title\":\"Day 4\",\"desc\":\"Fall asleep soon\"}",
+        "music_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/Day4.mp3"
     }, {
         "day": 5,
         "cover_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_7d_bg_5.jpg",
         "bg_video_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_vedio_5.mp4",
         "cover_desc": "{\"title\":\"7 Day Sleep Plan\",\"desc\":\"Fall asleep fast，start a healthier life\"}",
-        "day_desc": "{\"title\":\"Day 5\",\"desc\":\"Deep sleep hypnosis\"}"
+        "day_desc": "{\"title\":\"Day 5\",\"desc\":\"Deep sleep hypnosis\"}",
+        "music_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/Day5.mp3"
     }, {
         "day": 6,
         "cover_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_7d_bg_6.jpg",
         "bg_video_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_vedio_6.mp4",
         "cover_desc": "{\"title\":\"7 Day Sleep Plan\",\"desc\":\"Fall asleep fast，start a healthier life\"}",
-        "day_desc": "{\"title\":\"Day 6\",\"desc\":\"Enjoy sweet dream\"}"
+        "day_desc": "{\"title\":\"Day 6\",\"desc\":\"Enjoy sweet dream\"}",
+        "music_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/Day6.mp3"
     }, {
         "day": 7,
         "cover_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_7d_bg_7.jpg",
         "bg_video_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/plan_vedio_7.mp4",
         "cover_desc": "{\"title\":\"7 Day Sleep Plan\",\"desc\":\"Fall asleep fast，start a healthier life\"}",
-        "day_desc": "{\"title\":\"Day 7\",\"desc\":\"Keep healthy habits\"}"
+        "day_desc": "{\"title\":\"Day 7\",\"desc\":\"Keep healthy habits\"}",
+        "music_url": "https://source.funnyplay.me/SleepMedia/scene/Plan/Day7.mp3"
     }]
 }

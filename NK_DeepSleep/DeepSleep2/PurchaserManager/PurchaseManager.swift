@@ -127,13 +127,13 @@ public class PurchaseManager {
                         
                         MTEvent.default.tga_userPropertyForPurchase(status: .active,
                                                                     productId: items.first?.productId ?? "")
-
+                        
                     } else {
                         MTEvent.default.tga_userPropertyForPurchase(status: .expired,
                                                                     productId: items.first?.productId ?? "")
-
+                        
                     }
-
+                    
                     
                     
                     return inPurchase
@@ -245,13 +245,13 @@ public class PurchaseManager {
                                 MTEvent.default.tga_userPropertyForUserType(userType: "500")
                                 MTUserTypeHelper.default.currentUserType = "500"
                             }
-
+                            
                             let price = purchaseDetail.product.price.doubleValue
                             
                             MTEvent.default.tga_eventStorePagePurchaseFinish(productId: iapType.rawValue, source: source, result: true)
                             MTEvent.default.tga_userPropertyForPurchase(status: .active,
                                                                         productId: purchaseDetail.productId)
-
+                            
                             MTEvent.adjustTrackRevenue(eventString, price: price, currencyCode: purchaseDetail.product.priceLocale.currencyCode ?? "USD")
                             success?()
                         }
@@ -282,13 +282,13 @@ public class PurchaseManager {
                             MTEvent.default.tga_userPropertyForUserType(userType: "500")
                             MTUserTypeHelper.default.currentUserType = "500"
                         }
-
+                        
                         let price = purchaseDetail.product.price.doubleValue
-
+                        
                         MTEvent.default.tga_eventStorePagePurchaseFinish(productId: iapType.rawValue, source: source, result: true)
                         MTEvent.default.tga_userPropertyForPurchase(status: .active,
                                                                     productId: purchaseDetail.productId)
-
+                        
                         MTEvent.adjustTrackRevenue(eventString, price: price, currencyCode: purchaseDetail.product.priceLocale.currencyCode ?? "USD")
                         
                         //

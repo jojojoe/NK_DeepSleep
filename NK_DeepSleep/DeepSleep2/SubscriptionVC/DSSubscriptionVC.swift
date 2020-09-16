@@ -266,75 +266,84 @@ extension DSSubscriptionVC {
         PurchaseManager.default.purchaseInfo { [weak self] items in
             guard let `self` = self else { return }
             
-            let yearItem = items.filter { $0.iapID == PurchaseManager.IAPType.year.rawValue }.first
-            let currencyCode = yearItem?.priceLocale.currencySymbol ?? "$"
             
-            let monthItem = items.filter { $0.iapID == PurchaseManager.IAPType.month.rawValue }.first
-            
-            let onceItem = items.filter { $0.iapID == PurchaseManager.IAPType.halfYear.rawValue }.first
-            
-            #if DEBUG
-//            AppDelegate.fireBaseValue.showSpecial = true
-            #endif
-            if AppDelegate.fireBaseValue.in_protected == true {
+            DispatchQueue.main.async {
+                [weak self] in
+                guard let `self` = self else {return}
                 
-                let monthPriceStr = "\(currencyCode)\(String(format: "%.2f", monthItem?.price ?? self.monthPrice))"
-                let monthTitleStr = "Monthly: XX".localized().replacingOccurrences(of: "XX", with: monthPriceStr)
-
-                let yearPriceStr = "\(currencyCode)\(String(format: "%.2f", yearItem?.price ?? self.yearPrice))"
-                let yearTitleStr = "Yearly: XX".localized().replacingOccurrences(of: "XX", with: yearPriceStr)
-
-                let oncePriceStr = "\(currencyCode)\(String(format: "%.2f", onceItem?.price ?? self.oncePrice))"
-                let onceTitleStr = "Lifetime: XX".localized().replacingOccurrences(of: "XX", with: oncePriceStr)
+                let yearItem = items.filter { $0.iapID == PurchaseManager.IAPType.year.rawValue }.first
+                let currencyCode = yearItem?.priceLocale.currencySymbol ?? "$"
                 
-                self.monthSubTitleLabel.text = monthTitleStr
-                self.yearSubTitleLabel.text = yearTitleStr
-                self.onceSubTitleLabel.text = onceTitleStr
+                let monthItem = items.filter { $0.iapID == PurchaseManager.IAPType.month.rawValue }.first
+                
+                let onceItem = items.filter { $0.iapID == PurchaseManager.IAPType.halfYear.rawValue }.first
+                
+                #if DEBUG
+                //            AppDelegate.fireBaseValue.showSpecial = true
+                #endif
+                if AppDelegate.fireBaseValue.in_protected == true {
                     
-                self.monthSubDesLabel.text = ""
-                self.yearSubDesLabel.text = ""
-                self.onceSubDesLabel.text = ""
-                
-                self.monthSubDesLabelHeight.constant = 0
-                self.yearSubDesLabelHeight.constant = 0
-                self.onceSubDesLabelHeight.constant = 0
-                 
-            } else {
-                let monthPriceStr = "\(currencyCode)\(String(format: "%.2f", monthItem?.price ?? self.monthPrice))"
-                let monthTitleStr = "Monthly: XX".localized().replacingOccurrences(of: "XX", with: monthPriceStr)
-
-                let yearPriceStr = "\(currencyCode)\(String(format: "%.2f", yearItem?.price ?? self.yearPrice))"
-                let yearTitleStr = "Yearly: XX".localized().replacingOccurrences(of: "XX", with: yearPriceStr)
-
-                let oncePriceStr = "\(currencyCode)\(String(format: "%.2f", onceItem?.price ?? self.oncePrice))"
-                let onceTitleStr = "Lifetime: XX".localized().replacingOccurrences(of: "XX", with: oncePriceStr)
-                
-                self.monthSubTitleLabel.text = monthTitleStr
-                self.yearSubTitleLabel.text = yearTitleStr
-                self.onceSubTitleLabel.text = onceTitleStr
+                    let monthPriceStr = "\(currencyCode)\(String(format: "%.2f", monthItem?.price ?? self.monthPrice))"
+                    let monthTitleStr = "Monthly: XX".localized().replacingOccurrences(of: "XX", with: monthPriceStr)
                     
-                if let monthDiscountPrice = monthItem?.discountsFirstPrice {
-                    let monthDiscountPriceStr = "\(currencyCode)\(monthDiscountPrice)"
-                    self.monthSubDesLabel.text = "First Month: XX".localized().replacingOccurrences(of: "XX", with: monthDiscountPriceStr)
+                    let yearPriceStr = "\(currencyCode)\(String(format: "%.2f", yearItem?.price ?? self.yearPrice))"
+                    let yearTitleStr = "Yearly: XX".localized().replacingOccurrences(of: "XX", with: yearPriceStr)
+                    
+                    let oncePriceStr = "\(currencyCode)\(String(format: "%.2f", onceItem?.price ?? self.oncePrice))"
+                    let onceTitleStr = "Lifetime: XX".localized().replacingOccurrences(of: "XX", with: oncePriceStr)
+                    
+                    self.monthSubTitleLabel.text = monthTitleStr
+                    self.yearSubTitleLabel.text = yearTitleStr
+                    self.onceSubTitleLabel.text = onceTitleStr
+                    
+                    self.monthSubDesLabel.text = ""
+                    self.yearSubDesLabel.text = ""
+                    self.onceSubDesLabel.text = ""
+                    
+                    self.monthSubDesLabelHeight.constant = 0
+                    self.yearSubDesLabelHeight.constant = 0
+                    self.onceSubDesLabelHeight.constant = 0
+                    
+                } else {
+                    let monthPriceStr = "\(currencyCode)\(String(format: "%.2f", monthItem?.price ?? self.monthPrice))"
+                    let monthTitleStr = "Monthly: XX".localized().replacingOccurrences(of: "XX", with: monthPriceStr)
+                    
+                    let yearPriceStr = "\(currencyCode)\(String(format: "%.2f", yearItem?.price ?? self.yearPrice))"
+                    let yearTitleStr = "Yearly: XX".localized().replacingOccurrences(of: "XX", with: yearPriceStr)
+                    
+                    let oncePriceStr = "\(currencyCode)\(String(format: "%.2f", onceItem?.price ?? self.oncePrice))"
+                    let onceTitleStr = "Lifetime: XX".localized().replacingOccurrences(of: "XX", with: oncePriceStr)
+                    
+                    self.monthSubTitleLabel.text = monthTitleStr
+                    self.yearSubTitleLabel.text = yearTitleStr
+                    self.onceSubTitleLabel.text = onceTitleStr
+                    
+                    if let monthDiscountPrice = monthItem?.discountsFirstPrice {
+                        let monthDiscountPriceStr = "\(currencyCode)\(monthDiscountPrice)"
+                        self.monthSubDesLabel.text = "First Month: XX".localized().replacingOccurrences(of: "XX", with: monthDiscountPriceStr)
+                    }
+                    
+                    
+                    let yearDesPrice = (((yearItem?.price ?? self.yearPrice) / 12.0) * 100.0).int
+                    let yearPerMonthPrice = String(format: "%.2f", yearDesPrice.double / 100.0)
+                    let yearDesPriceStr = "\(currencyCode)\(yearPerMonthPrice)"
+                    let yearDesStr = "Per Month ≈ XX".localized().replacingOccurrences(of: "XX", with: yearDesPriceStr)
+                    
+                    self.yearSubDesLabel.text = yearDesStr
+                    self.yearSubDesLabel.isHidden = false
+                    //                self.monthSubDesLabel.isHidden = false
+                    
+                    self.onceSubDesLabel.text = ""
+                    
+                    self.monthSubDesLabelHeight.constant = 0
+                    self.yearSubDesLabelHeight.constant = 18
+                    self.onceSubDesLabelHeight.constant = 0
+                    
                 }
                 
-                
-                let yearDesPrice = (((yearItem?.price ?? self.yearPrice) / 12.0) * 100.0).int
-                let yearPerMonthPrice = String(format: "%.2f", yearDesPrice.double / 100.0)
-                let yearDesPriceStr = "\(currencyCode)\(yearPerMonthPrice)"
-                let yearDesStr = "Per Month ≈ XX".localized().replacingOccurrences(of: "XX", with: yearDesPriceStr)
-                
-                self.yearSubDesLabel.text = yearDesStr
-                self.yearSubDesLabel.isHidden = false
-//                self.monthSubDesLabel.isHidden = false
-                
-                self.onceSubDesLabel.text = ""
-                
-                self.monthSubDesLabelHeight.constant = 0
-                self.yearSubDesLabelHeight.constant = 18
-                self.onceSubDesLabelHeight.constant = 0
-                 
             }
+            
+            
         }
     }
     
@@ -349,14 +358,18 @@ extension DSSubscriptionVC {
         PurchaseManager.default.order(iapType: iapType, source: source ?? "unknown", success: { [weak self] in
             let status = PurchaseManager.default.inSubscription
             print("purchase status : \(status)")
-            NotificationCenter.default.post(
-                name: NSNotification.Name(rawValue: PurchaseStatusNotificationKeys.success),
-                object: nil,
-                userInfo: nil
-            )
+            if status == true {
+                NotificationCenter.default.post(
+                    name: NSNotification.Name(rawValue: PurchaseStatusNotificationKeys.success),
+                    object: nil,
+                    userInfo: nil
+                )
+                self?.dismissVC()
+            }
+            
             
 //            self?.backBtnBlock?()
-            self?.dismissVC()
+            
         })
         
         
